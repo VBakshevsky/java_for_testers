@@ -7,7 +7,7 @@ public record Triangle(double a, double b, double c ) {
     }
 
     public static void printTriangleArea(Triangle a) {
-        var text = String.format("Площадь треугольника со сторонами ") + Math.sqrt(a.Area());
+        var text = (String.format("Площадь треугольника со сторонами %f и %f и %f = %f", a.a, a.b, a.c, Math.sqrt(a.Area())));
         System.out.println(text);
     }
 
