@@ -23,4 +23,13 @@ public class TriangleTests {
         double result = a.area();
         Assertions.assertEquals(10.825317547305483, result);
     }
+    @Test
+    void triangleCheck() { //Проверка сторон и неравенства треугольника
+        try {
+            new Triangle(-5.0, 10.0, 5.0);
+            Assertions.fail();
+        } catch (IllegalArgumentException exception) {
+            // OK
+        }
+    }
 }
