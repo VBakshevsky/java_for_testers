@@ -16,14 +16,14 @@ public class UserCreationTests extends TestBase {
     @Test
     public void canCreateUserWithInitials() {
         var emptyUser = new UserData();
-        var userWithName = emptyUser.withInitials("first name", "middle name","last name");
-        createUser(userWithName);
+        var userWithInitials = emptyUser.withInitials("first name", "middle name","last name");
+        createUser(userWithInitials);
     }
 
     @Test
     public void canCreateUserWithMainInformation() {
         var emptyUser = new UserData();
-        var userWithName = emptyUser.withMainInformation("first name", "middle name","last name","address","test@mail.ru","test2@mail.ru","test3@mail.ru","+791712332111");
-        createUser(userWithName);
+        var userWithMainInformation = emptyUser.withMainInformation("first name", "middle name","last name","address","test@mail.ru","test2@mail.ru","test3@mail.ru","+791712332111");
+        createUser(userWithMainInformation);
     }
 }
