@@ -1,25 +1,14 @@
+package manager;
+
 import model.GroupData;
 import model.UserData;
-import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class TestBase {
+public class ApplicationManager {
     protected static WebDriver driver;
 
-    protected static void removeGroup() {
-        driver.findElement(By.name("selected[]")).click();
-        driver.findElement(By.name("delete")).click();
-        driver.findElement(By.linkText("group page")).click();
-    }
-
-    protected static void removeUser() {
-        driver.findElement(By.name("selected[]")).click();
-        driver.findElement(By.xpath("//input[@value=\'Delete\']")).click();
-    }
-
-    @BeforeEach
-    public void setUp() {
+    public void init() {
         if (driver == null) {
             driver = new FirefoxDriver();
             Runtime.getRuntime().addShutdownHook(new Thread(driver::quit));
@@ -29,10 +18,9 @@ public class TestBase {
             driver.findElement(By.name("pass")).sendKeys("secret");
             driver.findElement(By.xpath("//input[@value=\'Login\']")).click();
         }
-
     }
 
-    protected boolean isElementPresent(By Locator) {
+    public boolean isElementPresent(By Locator) {
         try {
             driver.findElement(Locator);
             return true;
@@ -41,7 +29,7 @@ public class TestBase {
         }
     }
 
-    protected void createGroup(GroupData group) {
+    public void createGroup(GroupData group) {
         driver.findElement(By.name("new")).click();
         driver.findElement(By.name("group_name")).click();
         driver.findElement(By.name("group_name")).sendKeys(group.name());
@@ -53,17 +41,7 @@ public class TestBase {
         driver.findElement(By.linkText("group page")).click();
     }
 
-    protected void openGroupsPage() {
-        if (!isElementPresent(By.name("new"))) {
-            driver.findElement(By.linkText("groups")).click();
-        }
-    }
-
-    protected boolean isThereARecord() {
-        return isElementPresent(By.name("selected[]"));
-    }
-
-    protected void createUser(UserData user) {
+    public void createUser(UserData user) {
         driver.findElement(By.linkText("add new")).click();
         driver.findElement(By.name("firstname")).click();
         driver.findElement(By.name("firstname")).sendKeys(user.firstname());
@@ -115,5 +93,26 @@ public class TestBase {
         driver.findElement(By.name("ayear")).sendKeys(user.ayear());
         driver.findElement(By.xpath("(//input[@name='submit'])")).click();
         driver.findElement(By.linkText("home")).click();
+    }
+
+    public void openGroupsPage() {
+        if (!isElementPresent(By.name("new"))) {
+            driver.findElement(By.linkText("groups")).click();
+        }
+    }
+
+    public boolean isThereARecord() {
+        return isElementPresent(By.name("selected[]"));
+    }
+
+    public void removeGroup() {
+        driver.findElement(By.name("selected[]")).click();
+        driver.findElement(By.name("delete")).click();
+        driver.findElement(By.linkText("group page")).click();
+    }
+
+    public void removeUser() {
+        driver.findElement(By.name("selected[]")).click();
+        driver.findElement(By.xpath("//input[@value=\'Delete\']")).click();
     }
 }
