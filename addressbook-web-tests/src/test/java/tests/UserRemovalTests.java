@@ -7,10 +7,9 @@ public class UserRemovalTests extends TestBase {
 
     @Test
     public void canDeleteUser() {
-        if (!app.isThereARecord()) {
-            app.createUser(new UserData("first name", "middle name", "Last name", "Nickname", "Title", "Company", "Address", "Home", "+791712332111", "Work", "Fax", "test@mail.ru", "test2@mail.ru", "test3@mail.ru", "homepage", "20", "March", "2000", "May", "15", "2001"));
+        if (!app.users().isUserPresent()) {
+            app.users().createUser(new UserData("first name", "middle name", "Last name", "Nickname", "Title", "Company", "Address", "Home", "+791712332111", "Work", "Fax", "test@mail.ru", "test2@mail.ru", "test3@mail.ru", "homepage", "20", "March", "2000", "May", "15", "2001"));
         }
-        app.removeUser();
+        app.users().removeUser();
     }
-
 }
