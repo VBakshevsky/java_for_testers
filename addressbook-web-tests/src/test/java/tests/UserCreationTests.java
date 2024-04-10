@@ -21,6 +21,11 @@ public class UserCreationTests extends TestBase {
     }
 
     @Test
+    public void canCreateUserWithDate() {
+        app.users().createUser(new UserData().withDate("1", "March","1996","15", "May","2000"));
+    }
+
+    @Test
     public void canCreateUserWithMainInformation() {
         app.users().createUser(new UserData().withMainInformation("first name", "middle name","last name","address","test@mail.ru","test2@mail.ru","test3@mail.ru","+791712332111"));
     }

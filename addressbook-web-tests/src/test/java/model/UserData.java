@@ -7,11 +7,15 @@ public record UserData(String firstname, String middlename, String lastname, Str
                        String byear, String amonth, String aday, String ayear) {
 
     public UserData() {
-        this("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "-", "", "-", "", "");
+        this("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "-", "-", "", "-", "-", "");
     }
 
     public UserData withInitials(String firstname, String middlename, String lastname) {
         return new UserData(firstname, middlename, lastname, this.nickname, this.title, this.company, this.address, this.home, this.mobile, this.work, this.fax, this.email, this.email2, this.email3, this.homepage, this.bday, this.bmonth, this.byear, this.amonth, this.aday, this.ayear);
+    }
+
+    public UserData withDate(String bday, String bmonth, String byear, String aday, String amonth, String ayear) {
+        return new UserData(this.firstname, this.middlename, this.lastname, this.nickname, this.title, this.company, this.address, this.home, this.mobile, this.work, this.fax, this.email, this.email2, this.email3, this.homepage, bday, bmonth, byear, amonth, aday, ayear);
     }
 
     public UserData withMainInformation(String firstname, String middlename, String lastname,String address, String email, String email2, String email3, String mobile) {
