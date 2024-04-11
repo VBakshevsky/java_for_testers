@@ -20,8 +20,17 @@ public class HelperBase {
         manager.driver.findElement(locator).sendKeys(text);
     }
 
-    protected void dropDownList(ApplicationManager manager, String list, String user) {
-        WebElement dropdown = manager.driver.findElement(By.name(list));
-        dropdown.findElement(By.xpath(".//option[. = '" + user + "']")).click();
+    protected void dropDownList(By locator, String text) {
+        WebElement dropdown = manager.driver.findElement(locator);
+        dropdown.findElement(By.xpath(".//option[. = '" + text + "']")).click();
     }
+
+    //protected final WebElement list(By locator) {
+      //return manager.driver.findElement(locator);
+    //}
+
+    //protected void dropDownList1(ApplicationManager manager, String list, String user) {
+        //WebElement dropdown = manager.driver.findElement(By.name(list));
+        //dropdown.findElement(By.xpath(".//option[. = '" + user + "']")).click();
+    //}
 }
