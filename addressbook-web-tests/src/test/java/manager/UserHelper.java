@@ -84,7 +84,11 @@ public class UserHelper extends HelperBase {
         click(By.xpath("//img[@alt='Edit']"));
     }
 
-    public boolean isUserPresent() {
-        return manager.isElementPresent(By.name("selected[]"));
+    //public boolean isUserPresent() {
+        //return manager.isElementPresent(By.name("selected[]"));
+    //}
+
+    public int getCountUsers() {
+         return manager.driver.findElements(By.name("selected[]")).size();
     }
 }

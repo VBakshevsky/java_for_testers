@@ -39,10 +39,10 @@ public class GroupHelper extends HelperBase {
         }
     }
 
-    public boolean isGroupPresent() {
-        openGroupsPage();
-        return manager.isElementPresent(By.name("selected[]"));
-    }
+    //public boolean isGroupPresent() {
+        //openGroupsPage();
+        //return manager.isElementPresent(By.name("selected[]"));
+    //}
 
     private void submitGroupCreation() {
         click(By.name("submit"));
@@ -79,4 +79,8 @@ public class GroupHelper extends HelperBase {
         click(By.name("selected[]"));
     }
 
+    public int getCountGroup() {
+        openGroupsPage();
+        return manager.driver.findElements(By.name("selected[]")).size();
+    }
 }
