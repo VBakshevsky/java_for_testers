@@ -25,6 +25,13 @@ public class HelperBase {
         dropdown.findElement(By.xpath(".//option[. = '" + text + "']")).click();
     }
 
+    protected void selectAllElements() {
+        var checkboxes = manager.driver.findElements(By.name("selected[]"));
+        for (var checkbox : checkboxes) {
+            checkbox.click();
+        }
+    }
+
     //protected final WebElement list(By locator) {
       //return manager.driver.findElement(locator);
     //}
