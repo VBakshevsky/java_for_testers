@@ -27,6 +27,11 @@ public class UserHelper extends HelperBase {
         submitUserModification();
         returnToHomePage();
     }
+
+    public void removeAllUsers() {
+        selectAllElements();
+        removeSelectedUsers();
+    }
     private void removeSelectedUsers() {
         click(By.xpath("//input[@value=\'Delete\']"));
     }
@@ -92,8 +97,4 @@ public class UserHelper extends HelperBase {
          return manager.driver.findElements(By.name("selected[]")).size();
     }
 
-    public void removeAllUsers() {
-        selectAllElements();
-        removeSelectedUsers();
-    }
 }

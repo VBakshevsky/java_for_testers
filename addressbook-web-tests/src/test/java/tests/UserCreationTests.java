@@ -9,9 +9,20 @@ public class UserCreationTests extends TestBase {
     @Test
     public void canCreateUser() {
         int userCount = app.users().getCountUsers();
-        app.users().createUser(new UserData("first name", "middle name", "Last name", "Nickname", "Title", "Company", "Address", "Home", "+791712332111", "Work", "Fax", "test@mail.ru", "test2@mail.ru", "test3@mail.ru", "homepage", "20", "March", "2000", "May", "15", "2001"));
+        app.users().createUser(new UserData("first name", "middle name", "Last name", "Nickname", "Title", "Company", "Address", "Home", "+791712332111", "Work", "Fax", "test@mail.ru", "test2@mail.ru", "test3@mail.ru", "homepage", randomDay(), randomMonth(), "2000", randomDay(), randomMonth(), "2001"));
         int NewUserCount = app.users().getCountUsers();
         Assertions.assertEquals(userCount + 1,NewUserCount);
+    }
+
+    @Test
+    public void canCreateMultipleUsers() {
+        int n = 5;
+        int userCount = app.users().getCountUsers();
+        for (int i = 0; i < n; i++) {
+            app.users().createUser(new UserData("first name", "middle name", "Last name", "Nickname", "Title", "Company", "Address", "Home", "+791712332111", "Work", "Fax", "test@mail.ru", "test2@mail.ru", "test3@mail.ru", "homepage", randomDay(), randomMonth(), "2000", randomDay(), randomMonth(), "2001"));
+        }
+        int NewUserCount = app.users().getCountUsers();
+        Assertions.assertEquals(userCount + n,NewUserCount);
     }
 
     @Test
