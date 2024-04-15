@@ -2,7 +2,7 @@ package tests;
 
 import manager.ApplicationManager;
 import org.junit.jupiter.api.BeforeEach;
-
+import org.apache.commons.lang3.RandomStringUtils;
 import java.util.Random;
 
 public class TestBase {
@@ -17,7 +17,7 @@ public class TestBase {
         }
     }
 
-    public String randomString(int n) {
+    public static String randomString(int n) {
         var rnd = new Random();
         var result = "";
         for (int i = 0; i < n; i++) {
@@ -26,16 +26,37 @@ public class TestBase {
         return result;
     }
 
-    public String randomDay() {
+    public static String randomDay() {
         var rnd = new Random();
         var n = rnd.nextInt(31) + 1;
         return "" + n;
     }
 
-    public String randomMonth() {
+    public static String randomMonth() {
         var rnd = new Random();
         var n = rnd.nextInt(12);
         String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December",};
         return months[n];
+    }
+
+    public static String randomYear() {
+        var rnd = new Random();
+        int year = rnd.nextInt(501) + 2000;
+        return "" + year;
+    }
+
+    public static String randomMail(){
+        String alphabet = RandomStringUtils.randomAlphabetic(8);
+        String email = alphabet + "@mail.ru";
+        return email;
+    }
+
+    public static String randomMobileNumber(){
+        Random rnd = new Random();
+        var mobile = "";
+        for (int i = 0; i < 10; i++) {
+            mobile = mobile + (rnd.nextInt(10));
+        }
+        return "+7" + mobile;
     }
 }

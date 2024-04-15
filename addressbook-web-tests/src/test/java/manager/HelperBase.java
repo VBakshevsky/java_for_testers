@@ -32,9 +32,6 @@ public class HelperBase {
         }
     }
 
-    //protected final WebElement list(By locator) {
-      //return manager.driver.findElement(locator);
-    //}
 
     //protected void dropDownList1(ApplicationManager manager, String list, String user) {
         //WebElement dropdown = manager.driver.findElement(By.name(list));

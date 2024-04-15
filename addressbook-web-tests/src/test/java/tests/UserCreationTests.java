@@ -2,46 +2,86 @@ package tests;
 
 import model.UserData;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserCreationTests extends TestBase {
-
-    @Test
-    public void canCreateUser() {
-        int userCount = app.users().getCountUsers();
-        app.users().createUser(new UserData("first name", "middle name", "Last name", "Nickname", "Title", "Company", "Address", "Home", "+791712332111", "Work", "Fax", "test@mail.ru", "test2@mail.ru", "test3@mail.ru", "homepage", randomDay(), randomMonth(), "2000", randomDay(), randomMonth(), "2001"));
-        int NewUserCount = app.users().getCountUsers();
-        Assertions.assertEquals(userCount + 1,NewUserCount);
-    }
-
-    @Test
-    public void canCreateMultipleUsers() {
-        int n = 5;
-        int userCount = app.users().getCountUsers();
-        for (int i = 0; i < n; i++) {
-            app.users().createUser(new UserData("first name", "middle name", "Last name", "Nickname", "Title", "Company", "Address", "Home", "+791712332111", "Work", "Fax", "test@mail.ru", "test2@mail.ru", "test3@mail.ru", "homepage", randomDay(), randomMonth(), "2000", randomDay(), randomMonth(), "2001"));
+    public static List<UserData> userProvider() {
+        var result = new ArrayList<UserData>();
+//        for (var firstname : List.of("", "first name")) {
+//            for (var middlename : List.of("", "middle name")) {
+//                for (var lastname : List.of("", "last name")) {
+//                    for (var nickname : List.of("", "nickname")) {
+//                        for (var title : List.of("", "title")) {
+//                            for (var company : List.of("", "company")) {
+//                                for (var address : List.of("", "address")) {
+//                                    for (var home : List.of("", "home")) {
+//                                        for (var mobile : List.of("", "+712332112355")) {
+//                                            for (var work : List.of("", "work")) {
+//                                                for (var fax : List.of("", "fax")) {
+//                                                    for (var email : List.of("", "test@mail.ru")) {
+//                                                        for (var email2 : List.of("", "test1@mail.ru")) {
+//                                                            for (var email3 : List.of("", "test2@mail.ru")) {
+//                                                                for (var homepage : List.of("", "homepage")) {
+//                                                                    for (var bday : List.of("-", "5")) {
+//                                                                        for (var bmonth : List.of("-", "March")) {
+//                                                                            for (var byear : List.of("", "2001")) {
+//                                                                                for (var aday : List.of("-", "10")) {
+//                                                                                    for (var amonth : List.of("-", "May")) {
+//                                                                                        for (var ayear : List.of("", "2005")) {
+//                                                                                            result.add(new UserData(firstname, middlename, lastname, "", "", "", "", "", "", "", "", randomMail(), randomMail(), randomMail(), "", "-", "-", "", "-", "-", ""));
+//                                                                                        }
+//                                                                                    }
+//                                                                                }
+//                                                                            }
+//                                                                        }
+//                                                                    }
+//                                                                }
+//                                                            }
+//                                                        }
+//                                                    }
+//                                                }
+//                                            }
+//                                        }
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
+        for (int i = 0; i < 5; i++) {
+            result.add(new UserData(randomString(i * 10), randomString(i * 10), randomString(i * 10), randomString(i * 10), randomString(i * 10), randomString(i * 10), randomString(i * 10), randomString(i * 10), randomMobileNumber(), randomString(i * 10), randomString(i * 10), randomMail(), randomMail(), randomMail(), randomString(i * 10), randomDay(), randomMonth(), randomYear(), randomDay(), randomMonth(), randomYear()));
         }
+        return result;
+    }
+
+    @ParameterizedTest
+    @MethodSource("userProvider")
+    public void canCreateMultipleUsers(UserData user) {
+        int userCount = app.users().getCountUsers();
+        app.users().createUser(user);
         int NewUserCount = app.users().getCountUsers();
-        Assertions.assertEquals(userCount + n,NewUserCount);
+        Assertions.assertEquals(userCount + 1, NewUserCount);
     }
 
-    @Test
-    public void canCreateUserWithEmptyName() {
-        app.users().createUser(new UserData());
+    public static List<UserData> negativeUerProvider() {
+        var result = new ArrayList<UserData>(List.of(
+                new UserData("first name'", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "-", "-", "", "-", "-", "")));
+        return result;
     }
 
-    @Test
-    public void canCreateUserWithInitials() {
-        app.users().createUser(new UserData().withInitials("first name", "middle name","last name"));
+    @ParameterizedTest
+    @MethodSource("negativeUerProvider")
+    public void canNotCreateUser(UserData user) {
+        int userCount = app.users().getCountUsers();
+        app.users().createUser(user);
+        int NewUserCount = app.users().getCountUsers();
+        Assertions.assertEquals(userCount, NewUserCount);
     }
 
-    @Test
-    public void canCreateUserWithDate() {
-        app.users().createUser(new UserData().withDate("1", "March","1996","15", "May","2000"));
-    }
-
-    @Test
-    public void canCreateUserWithMainInformation() {
-        app.users().createUser(new UserData().withMainInformation("first name", "middle name","last name","address","test@mail.ru","test2@mail.ru","test3@mail.ru","+791712332111"));
-    }
 }
