@@ -106,8 +106,8 @@ public class UserHelper extends HelperBase {
         var users = new ArrayList<UserData>();
         var trs = manager.driver.findElements(By.cssSelector("tr[name=\"entry\"]"));
         for (var tr : trs) {
-            var lastname = tr.findElement(By.xpath("//td[2]")).getText();
-            var firstname = tr.findElement(By.xpath("//td[3]")).getText();
+            var lastname = tr.findElement(By.xpath(".//td[2]")).getText();
+            var firstname = tr.findElement(By.xpath(".//td[3]")).getText();
             var checkbox = tr.findElement(By.name("selected[]"));
             var id = checkbox.getAttribute("value");
             users.add(new UserData().withId(id).withFirstName(firstname).withLastName(lastname));
