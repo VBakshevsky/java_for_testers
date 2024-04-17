@@ -14,12 +14,16 @@ public class UserCreationTests extends TestBase {
         for (var firstname : List.of("", "first name")) {
             for (var middlename : List.of("", "middle name")) {
                 for (var lastname : List.of("", "last name")) {
-                    result.add(new UserData(firstname, middlename, lastname, "", "", "", "", "", "", "", "", "", "", "", "", "", "-", "", "", "-", ""));
+                    result.add(new UserData()
+                            .withInitials(firstname,middlename,lastname));
                 }
             }
         }
         for (int i = 0; i < 5; i++) {
-            result.add(new UserData(randomString(i * 10), randomString(i * 10), randomString(i * 10), randomString(i * 10), randomString(i * 10), randomString(i * 10), randomString(i * 10), randomString(i * 10), randomMobileNumber(), randomString(i * 10), randomString(i * 10), randomMail(), randomMail(), randomMail(), randomString(i * 10), randomDay(), randomMonth(), randomYear(), randomDay(), randomMonth(), randomYear()));
+            result.add(new UserData()
+                    .withInitials(randomString(i * 10),randomString(i * 10),randomString(i * 10))
+                    .withMainInformation(randomString(i * 10),randomString(i * 10),randomString(i * 10),randomString(i * 10),randomMail(),randomMail(),randomMail(),randomMobileNumber())
+                    .withDate(randomDay(),randomMonth(),randomYear(),randomDay(),randomMonth(),randomYear()));
         }
         return result;
     }
@@ -35,7 +39,7 @@ public class UserCreationTests extends TestBase {
 
     public static List<UserData> negativeUerProvider() {
         var result = new ArrayList<UserData>(List.of(
-                new UserData("first name'", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "-", "-", "", "-", "-", "")));
+                new UserData("", "first name'", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "-", "-", "", "-", "-", "")));
         return result;
     }
 

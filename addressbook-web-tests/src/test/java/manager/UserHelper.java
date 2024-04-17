@@ -1,11 +1,16 @@
 package manager;
 
+import model.GroupData;
 import model.UserData;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserHelper extends HelperBase {
 
-    public UserHelper (ApplicationManager manager){
+    public UserHelper(ApplicationManager manager) {
         super(manager);
     }
 
@@ -16,11 +21,12 @@ public class UserHelper extends HelperBase {
         returnToHomePage();
     }
 
-    public void removeUser() {
-        selectUser();
+    public void removeUser(UserData user) {
+        selectUser(user);
         removeSelectedUsers();
         returnToHomePage();
     }
+
     public void modifyUser(UserData modifiedUser) {
         initUserModification();
         fillUserForm(modifiedUser);
@@ -32,12 +38,13 @@ public class UserHelper extends HelperBase {
         selectAllElements();
         removeSelectedUsers();
     }
+
     private void removeSelectedUsers() {
         click(By.xpath("//input[@value=\'Delete\']"));
     }
 
-    private void selectUser() {
-        click(By.name("selected[]"));
+    private void selectUser(UserData user) {
+        click(By.cssSelector(String.format("input[value='%s']", user.id())));
     }
 
     private void submitUserCreation() {
@@ -86,11 +93,23 @@ public class UserHelper extends HelperBase {
     }
 
     //public boolean isUserPresent() {
-        //return manager.isElementPresent(By.name("selected[]"));
+    //return manager.isElementPresent(By.name("selected[]"));
     //}
 
     public int getCountUsers() {
-         return manager.driver.findElements(By.name("selected[]")).size();
+        return manager.driver.findElements(By.name("selected[]")).size();
     }
 
+    public List<UserData> getListUsers() {
+        var users = new ArrayList<UserData>();
+        var trs = manager.driver.findElements(By.cssSelector("tr[name=\"entry\"]"));
+        for (var tr : trs) {
+            var lastname = tr.findElement(By.xpath("//td[2]")).getText();
+            var firstname = tr.findElement(By.xpath("//td[3]")).getText();
+            var checkbox = tr.findElement(By.name("selected[]"));
+            var id = checkbox.getAttribute("value");
+            users.add(new UserData().withId(id).withFirstAndLastNames(firstname, lastname));
+        }
+        return users;
+    }
 }
