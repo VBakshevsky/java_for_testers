@@ -27,8 +27,9 @@ public class UserHelper extends HelperBase {
         returnToHomePage();
     }
 
-    public void modifyUser(UserData modifiedUser) {
-        initUserModification();
+    public void modifyUser(UserData user,UserData modifiedUser) {
+        //selectUser(user);
+        initUserModification(user);
         fillUserForm(modifiedUser);
         submitUserModification();
         returnToHomePage();
@@ -88,7 +89,8 @@ public class UserHelper extends HelperBase {
         type(By.name("ayear"), user.ayear());
     }
 
-    private void initUserModification() {
+    private void initUserModification(UserData user) {
+        click(By.cssSelector(String.format("input[value='%s']", user.id())));
         click(By.xpath("//img[@alt='Edit']"));
     }
 
@@ -108,7 +110,7 @@ public class UserHelper extends HelperBase {
             var firstname = tr.findElement(By.xpath("//td[3]")).getText();
             var checkbox = tr.findElement(By.name("selected[]"));
             var id = checkbox.getAttribute("value");
-            users.add(new UserData().withId(id).withFirstAndLastNames(firstname, lastname));
+            users.add(new UserData().withId(id).withFirstName(firstname).withLastName(lastname));
         }
         return users;
     }

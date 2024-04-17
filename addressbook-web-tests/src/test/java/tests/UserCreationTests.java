@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class UserCreationTests extends TestBase {
@@ -15,15 +16,18 @@ public class UserCreationTests extends TestBase {
             for (var middlename : List.of("", "middle name")) {
                 for (var lastname : List.of("", "last name")) {
                     result.add(new UserData()
-                            .withInitials(firstname,middlename,lastname));
+                            .withFirstName(firstname)
+                            .withMiddleName(middlename)
+                            .withLastName(lastname));
+
                 }
             }
         }
         for (int i = 0; i < 5; i++) {
             result.add(new UserData()
-                    .withInitials(randomString(i * 10),randomString(i * 10),randomString(i * 10))
-                    .withMainInformation(randomString(i * 10),randomString(i * 10),randomString(i * 10),randomString(i * 10),randomMail(),randomMail(),randomMail(),randomMobileNumber())
-                    .withDate(randomDay(),randomMonth(),randomYear(),randomDay(),randomMonth(),randomYear()));
+                    .withInitials(randomString(i * 10), randomString(i * 10), randomString(i * 10))
+                    .withMainInformation(randomString(i * 10), randomString(i * 10), randomString(i * 10), randomString(i * 10), randomMail(), randomMail(), randomMail(), randomMobileNumber())
+                    .withDate(randomDay(), randomMonth(), randomYear(), randomDay(), randomMonth(), randomYear()));
         }
         return result;
     }
@@ -31,10 +35,18 @@ public class UserCreationTests extends TestBase {
     @ParameterizedTest
     @MethodSource("userProvider")
     public void canCreateMultipleUsers(UserData user) {
-        int userCount = app.users().getCountUsers();
+        var oldUsers = app.users().getListUsers();
         app.users().createUser(user);
-        int NewUserCount = app.users().getCountUsers();
-        Assertions.assertEquals(userCount + 1, NewUserCount);
+        var newUsers = app.users().getListUsers();
+        Comparator<UserData> compareById = (o1, o2) -> {
+            return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
+        };
+        newUsers.sort(compareById);
+
+        var expectedList = new ArrayList<>(oldUsers);
+        expectedList.add(user.withId(newUsers.get(newUsers.size() - 1).id()).withAllInformation("", "", "", "", "", "", "", "", "", "", "", "", "", "-", "-", "", "-", "-", ""));
+        expectedList.sort(compareById);
+        Assertions.assertEquals(newUsers, expectedList);
     }
 
     public static List<UserData> negativeUerProvider() {
@@ -46,10 +58,10 @@ public class UserCreationTests extends TestBase {
     @ParameterizedTest
     @MethodSource("negativeUerProvider")
     public void canNotCreateUser(UserData user) {
-        int userCount = app.users().getCountUsers();
+        var oldUsers = app.users().getListUsers();
         app.users().createUser(user);
-        int NewUserCount = app.users().getCountUsers();
-        Assertions.assertEquals(userCount, NewUserCount);
+        var newUsers = app.users().getListUsers();
+        Assertions.assertEquals(newUsers, oldUsers);
     }
 
 }
