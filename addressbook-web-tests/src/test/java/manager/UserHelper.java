@@ -28,7 +28,6 @@ public class UserHelper extends HelperBase {
     }
 
     public void modifyUser(UserData user,UserData modifiedUser) {
-        //selectUser(user);
         initUserModification(user);
         fillUserForm(modifiedUser);
         submitUserModification();
@@ -90,13 +89,9 @@ public class UserHelper extends HelperBase {
     }
 
     private void initUserModification(UserData user) {
-        click(By.cssSelector(String.format("input[value='%s']", user.id())));
-        click(By.xpath("//img[@alt='Edit']"));
+        //click(By.xpath("//img[@alt='Edit']"));
+        click(By.cssSelector(String.format("a[href='edit.php?id=%s']", user.id())));
     }
-
-    //public boolean isUserPresent() {
-    //return manager.isElementPresent(By.name("selected[]"));
-    //}
 
     public int getCountUsers() {
         return manager.driver.findElements(By.name("selected[]")).size();
@@ -106,8 +101,11 @@ public class UserHelper extends HelperBase {
         var users = new ArrayList<UserData>();
         var trs = manager.driver.findElements(By.cssSelector("tr[name=\"entry\"]"));
         for (var tr : trs) {
-            var lastname = tr.findElement(By.xpath(".//td[2]")).getText();
-            var firstname = tr.findElement(By.xpath(".//td[3]")).getText();
+            var cells = tr.findElements(By.tagName("td"));
+            var lastname = cells.get(1).getText();
+            var firstname = cells.get(2).getText();
+            //var lastname = tr.findElement(By.xpath(".//td[2]")).getText();
+            //var firstname = tr.findElement(By.xpath(".//td[3]")).getText();
             var checkbox = tr.findElement(By.name("selected[]"));
             var id = checkbox.getAttribute("value");
             users.add(new UserData().withId(id).withFirstName(firstname).withLastName(lastname));
