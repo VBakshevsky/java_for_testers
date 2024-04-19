@@ -35,14 +35,16 @@ public class UserHelper extends HelperBase {
     }
 
     public void removeAllUsers() {
-        selectAllElements();
+        selectAllUsers();
         removeSelectedUsers();
     }
 
     private void removeSelectedUsers() {
         click(By.xpath("//input[@value=\'Delete\']"));
     }
-
+    private void selectAllUsers() {
+        click(By.xpath("//input[@id=\'MassCB\']"));
+    }
     private void selectUser(UserData user) {
         click(By.cssSelector(String.format("input[value='%s']", user.id())));
     }
@@ -90,7 +92,6 @@ public class UserHelper extends HelperBase {
     }
 
     private void initUserModification(UserData user) {
-        //click(By.xpath("//img[@alt='Edit']"));
         click(By.cssSelector(String.format("a[href='edit.php?id=%s']", user.id())));
     }
 

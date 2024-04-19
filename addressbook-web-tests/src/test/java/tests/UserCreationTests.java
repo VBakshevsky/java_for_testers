@@ -25,8 +25,8 @@ public class UserCreationTests extends TestBase {
         }
         for (int i = 0; i < 5; i++) {
             result.add(new UserData()
-                    .withInitials(randomString(i * 10), randomString(i * 10), randomString(i * 10))
-                    .withMainInformation(randomString(i * 10), randomString(i * 10), randomString(i * 10), randomString(i * 10), randomMail(), randomMail(), randomMail(), randomMobileNumber(),"src/test/resources/images/avatar.png"));
+                    //.withInitials(randomString(i * 10), randomString(i * 10), randomString(i * 10))
+                    .withMainInformation(randomString(i * 10), randomString(i * 10), randomString(i * 10), randomString(i * 10), randomMail(), randomMail(), randomMail(), randomMobileNumber(),randomFile("src/test/resources/images")));
 
         }
         return result;

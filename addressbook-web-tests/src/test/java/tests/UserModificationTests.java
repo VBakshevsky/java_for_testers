@@ -18,7 +18,7 @@ public class UserModificationTests extends TestBase {
         var oldUsers = app.users().getListUsers();
         var rnd = new Random();
         var index = rnd.nextInt(oldUsers.size());
-        var testData = new UserData().withMainInformation("first name modified", "middle name modified", "Last name modified",randomString(5),randomMail(),randomMail(),randomMail(),randomMobileNumber(),"src/test/resources/images/avatar.png");
+        var testData = new UserData().withMainInformation("first name modified", "middle name modified", "Last name modified",randomString(5),randomMail(),randomMail(),randomMail(),randomMobileNumber(),randomFile("src/test/resources/images"));
         app.users().modifyUser(oldUsers.get(index), testData);
         var newUsers = app.users().getListUsers();
         var expectedList = new ArrayList<>(oldUsers);
