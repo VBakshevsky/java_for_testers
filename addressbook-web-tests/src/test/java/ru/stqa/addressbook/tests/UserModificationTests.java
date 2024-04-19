@@ -1,6 +1,7 @@
-package tests;
+package ru.stqa.addressbook.tests;
 
-import model.UserData;
+import ru.stqa.addressbook.common.CommonFunctions;
+import ru.stqa.addressbook.model.UserData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +19,7 @@ public class UserModificationTests extends TestBase {
         var oldUsers = app.users().getListUsers();
         var rnd = new Random();
         var index = rnd.nextInt(oldUsers.size());
-        var testData = new UserData().withMainInformation("first name modified", "middle name modified", "Last name modified",randomString(5),randomMail(),randomMail(),randomMail(),randomMobileNumber(),randomFile("src/test/resources/images"));
+        var testData = new UserData().withMainInformation("first name modified", "middle name modified", "Last name modified", CommonFunctions.randomString(5), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMobileNumber(), CommonFunctions.randomFile("src/test/resources/images"));
         app.users().modifyUser(oldUsers.get(index), testData);
         var newUsers = app.users().getListUsers();
         var expectedList = new ArrayList<>(oldUsers);

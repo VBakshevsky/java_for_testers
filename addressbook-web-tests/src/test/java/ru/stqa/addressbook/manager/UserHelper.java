@@ -1,8 +1,6 @@
-package manager;
+package ru.stqa.addressbook.manager;
 
-import model.GroupData;
-import model.UserData;
-import org.junit.jupiter.api.Assertions;
+import ru.stqa.addressbook.model.UserData;
 import org.openqa.selenium.By;
 
 import java.util.ArrayList;

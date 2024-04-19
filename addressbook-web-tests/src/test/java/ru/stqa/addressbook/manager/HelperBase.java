@@ -1,4 +1,4 @@
-package manager;
+package ru.stqa.addressbook.manager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -36,6 +36,7 @@ public class HelperBase {
     }
 
     protected void attach(By locator, String file) {
+        //manager.driver.findElement(locator).sendKeys(Paths.get(file).toAbsolutePath().toString());
         File f = new File(file);
         if (f.exists()){
             manager.driver.findElement(locator).sendKeys(Paths.get(file).toAbsolutePath().toString());

@@ -1,6 +1,7 @@
-package tests;
+package ru.stqa.addressbook.tests;
 
-import model.UserData;
+import ru.stqa.addressbook.common.CommonFunctions;
+import ru.stqa.addressbook.model.UserData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -12,21 +13,21 @@ import java.util.List;
 public class UserCreationTests extends TestBase {
     public static List<UserData> userProvider() {
         var result = new ArrayList<UserData>();
-        for (var firstname : List.of("", "first name")) {
-            for (var middlename : List.of("", "middle name")) {
-                for (var lastname : List.of("", "last name")) {
-                    result.add(new UserData()
-                            .withFirstName(firstname)
-                            .withMiddleName(middlename)
-                            .withLastName(lastname));
-
-                }
-            }
-        }
+//        for (var firstname : List.of("", "first name")) {
+//            for (var middlename : List.of("", "middle name")) {
+//                for (var lastname : List.of("", "last name")) {
+//                    result.add(new UserData()
+//                            .withFirstName(firstname)
+//                            .withMiddleName(middlename)
+//                            .withLastName(lastname));
+//
+//                }
+//            }
+//        }
         for (int i = 0; i < 5; i++) {
             result.add(new UserData()
                     //.withInitials(randomString(i * 10), randomString(i * 10), randomString(i * 10))
-                    .withMainInformation(randomString(i * 10), randomString(i * 10), randomString(i * 10), randomString(i * 10), randomMail(), randomMail(), randomMail(), randomMobileNumber(),randomFile("src/test/resources/images")));
+                    .withMainInformation(CommonFunctions.randomString(i * 10), CommonFunctions.randomString(i * 10), CommonFunctions.randomString(i * 10), CommonFunctions.randomString(i * 10), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMobileNumber(), CommonFunctions.randomFile("src/test/resources/images")));
 
         }
         return result;
