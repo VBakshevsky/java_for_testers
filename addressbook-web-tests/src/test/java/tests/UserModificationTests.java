@@ -13,16 +13,16 @@ public class UserModificationTests extends TestBase {
     @Test
     void canModifyUser() {
         if (app.users().getCountUsers() == 0) {
-            app.users().createUser(new UserData("", "first name", "middle name", "Last name", "Nickname", "Title", "Company", "Address", "Home", "+791712332111", "Work", "Fax", "test@mail.ru", "test2@mail.ru", "test3@mail.ru", "homepage", "20", "March", "2000", "15", "May", "2001"));
+            app.users().createUser(new UserData("", "first name", "middle name", "Last name", "Nickname", "Title", "Company", "Address", "Home", "+791712332111", "Work", "Fax", "test@mail.ru", "test2@mail.ru", "test3@mail.ru", "homepage", "20", "March", "2000", "15", "May", "2001", ""));
         }
         var oldUsers = app.users().getListUsers();
         var rnd = new Random();
         var index = rnd.nextInt(oldUsers.size());
-        var testData = new UserData().withMainInformation("first name modified", "middle name modified", "Last name modified",randomString(5),randomMail(),randomMail(),randomMail(),randomMobileNumber());
+        var testData = new UserData().withMainInformation("first name modified", "middle name modified", "Last name modified",randomString(5),randomMail(),randomMail(),randomMail(),randomMobileNumber(),"src/test/resources/images/avatar.png");
         app.users().modifyUser(oldUsers.get(index), testData);
         var newUsers = app.users().getListUsers();
         var expectedList = new ArrayList<>(oldUsers);
-        expectedList.set(index,testData.withId(oldUsers.get(index).id()).withAllInformation("", "", "", "", "", "", "", "", "", "", "", "", "", "-", "-", "", "-", "-", ""));
+        expectedList.set(index,testData.withId(oldUsers.get(index).id()).withAllInformation("", "", "", "", "", "", "", "", "", "", "", "", "", "-", "-", "", "-", "-", "",""));
         Comparator<UserData> compareById = (o1, o2) -> {
             return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
         };

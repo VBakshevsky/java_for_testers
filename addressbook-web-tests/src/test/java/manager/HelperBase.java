@@ -3,6 +3,9 @@ package manager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.io.File;
+import java.nio.file.Paths;
+
 public class HelperBase {
     protected final ApplicationManager manager;
 
@@ -32,6 +35,12 @@ public class HelperBase {
         }
     }
 
+    protected void attach(By locator, String file) {
+        File f = new File(file);
+        if (f.exists()){
+            manager.driver.findElement(locator).sendKeys(Paths.get(file).toAbsolutePath().toString());
+        }
+    }
 
     //protected void dropDownList1(ApplicationManager manager, String list, String user) {
         //WebElement dropdown = manager.driver.findElement(By.name(list));

@@ -26,8 +26,8 @@ public class UserCreationTests extends TestBase {
         for (int i = 0; i < 5; i++) {
             result.add(new UserData()
                     .withInitials(randomString(i * 10), randomString(i * 10), randomString(i * 10))
-                    .withMainInformation(randomString(i * 10), randomString(i * 10), randomString(i * 10), randomString(i * 10), randomMail(), randomMail(), randomMail(), randomMobileNumber())
-                    .withDate(randomDay(), randomMonth(), randomYear(), randomDay(), randomMonth(), randomYear()));
+                    .withMainInformation(randomString(i * 10), randomString(i * 10), randomString(i * 10), randomString(i * 10), randomMail(), randomMail(), randomMail(), randomMobileNumber(),"src/test/resources/images/avatar.png"));
+
         }
         return result;
     }
@@ -44,14 +44,14 @@ public class UserCreationTests extends TestBase {
         newUsers.sort(compareById);
 
         var expectedList = new ArrayList<>(oldUsers);
-        expectedList.add(user.withId(newUsers.get(newUsers.size() - 1).id()).withAllInformation("", "", "", "", "", "", "", "", "", "", "", "", "", "-", "-", "", "-", "-", ""));
+        expectedList.add(user.withId(newUsers.get(newUsers.size() - 1).id()).withAllInformation("", "", "", "", "", "", "", "", "", "", "", "", "", "-", "-", "", "-", "-", "",""));
         expectedList.sort(compareById);
         Assertions.assertEquals(newUsers, expectedList);
     }
 
     public static List<UserData> negativeUerProvider() {
         var result = new ArrayList<UserData>(List.of(
-                new UserData("", "first name'", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "-", "-", "", "-", "-", "")));
+                new UserData("", "first name'", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "-", "-", "", "-", "-", "", "")));
         return result;
     }
 

@@ -69,6 +69,7 @@ public class UserHelper extends HelperBase {
         type(By.name("middlename"), user.middlename());
         type(By.name("lastname"), user.lastname());
         type(By.name("nickname"), user.nickname());
+        attach(By.name("photo"),user.photo());
         type(By.name("title"), user.title());
         type(By.name("company"), user.company());
         type(By.name("address"), user.address());
