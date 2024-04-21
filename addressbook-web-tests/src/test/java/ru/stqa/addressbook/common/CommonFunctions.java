@@ -35,13 +35,13 @@ public class CommonFunctions {
         return "" + year;
     }
 
-    public static String randomMail(){
+    public static String randomMail() {
         String alphabet = RandomStringUtils.randomAlphabetic(8);
         String email = alphabet + "@mail.ru";
         return email;
     }
 
-    public static String randomMobileNumber(){
+    public static String randomMobileNumber() {
         Random rnd = new Random();
         var mobile = "";
         for (int i = 0; i < 10; i++) {
@@ -50,24 +50,11 @@ public class CommonFunctions {
         return "+7" + mobile;
     }
 
-    public static String randomFile (String dir) {
+    public static String randomFile(String dir) {
         var fileNames = new File(dir).list();
         Random rnd = new Random();
         var index = rnd.nextInt(fileNames.length);
-        return Paths.get(dir,fileNames[index]).toString();
-    }
-
-    public static String randomFile1(String dir) {
-        File directory = new File(dir);
-        String[] fileNames = directory.list();
-
-        if (fileNames == null || fileNames.length == 0) {
-            System.out.println("В указанном каталоге нет файлов: " + dir);
-            return null;
-        }
-
-        Random rnd = new Random();
-        int index = rnd.nextInt(fileNames.length);
         return Paths.get(dir, fileNames[index]).toString();
     }
+
 }
