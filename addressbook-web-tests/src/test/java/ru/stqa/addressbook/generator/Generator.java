@@ -9,6 +9,7 @@ import ru.stqa.addressbook.model.GroupData;
 import ru.stqa.addressbook.model.UserData;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +67,6 @@ public class Generator {
         var result = new ArrayList<UserData>();
         for (int i = 0; i < count; i++) {
             result.add(new UserData()
-                    //.withInitials(CommonFunctions.randomString(i * 10), CommonFunctions.randomString(i * 10), CommonFunctions.randomString(i * 10)));
                     .withMainInformation(CommonFunctions.randomString(i * 10), CommonFunctions.randomString(i * 10), CommonFunctions.randomString(i * 10), CommonFunctions.randomString(i * 10), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMobileNumber(), CommonFunctions.randomFile("src/test/resources/images")));
         }
         return result;
@@ -76,7 +76,11 @@ public class Generator {
         if ("json".equals(format)) {
             ObjectMapper mapper = new ObjectMapper();
             mapper.enable(SerializationFeature.INDENT_OUTPUT);
-            mapper.writeValue(new File(output), data);
+            var json = mapper.writeValueAsString(data);
+
+            try (var writer = new FileWriter(output)){
+                writer.write(json);
+            }
         } else {
             throw new IllegalArgumentException("Неизвестный формат данных " + format);
         }

@@ -9,8 +9,12 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -18,19 +22,38 @@ import java.util.List;
 public class UserCreationTests extends TestBase {
     public static List<UserData> userProvider() throws IOException {
         var result = new ArrayList<UserData>();
-        for (var firstname : List.of("", "first name")) {
-            for (var middlename : List.of("", "middle name")) {
-                for (var lastname : List.of("", "last name")) {
-                    result.add(new UserData()
-                            .withFirstName(firstname)
-                            .withMiddleName(middlename)
-                            .withLastName(lastname));
+//        for (var firstname : List.of("", "first name")) {
+//            for (var middlename : List.of("", "middle name")) {
+//                for (var lastname : List.of("", "last name")) {
+//                    result.add(new UserData()
+//                            .withFirstName(firstname)
+//                            .withMiddleName(middlename)
+//                            .withLastName(lastname));
+//
+//                }
+//            }
+//        }
 
-                }
+                for (int i = 0; i < 5; i++) {
+            result.add(new UserData()
+                    .withInitials(CommonFunctions.randomString(i * 10), CommonFunctions.randomString(i * 10), CommonFunctions.randomString(i * 10)));
+                    //.withMainInformation(CommonFunctions.randomString(i * 10), CommonFunctions.randomString(i * 10), CommonFunctions.randomString(i * 10), CommonFunctions.randomString(i * 10), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMobileNumber(), CommonFunctions.randomFile("src/test/resources/images"))
+
+        }
+
+        var json = "";
+        try (var reader = new FileReader("users.json");
+        var breader = new BufferedReader(reader)
+        ) {
+            var line = breader.readLine();
+            while (line != null) {
+                json = json + line;
+                line = breader.readLine();
             }
         }
+        //var json = Files.readString(Paths.get("users.json"));
         ObjectMapper mapper = new ObjectMapper();
-        var value = mapper.readValue(new File("users.json"),  new TypeReference<List<UserData>>() {});
+        var value = mapper.readValue(json,  new TypeReference<List<UserData>>() {});
         result.addAll(value);
         return result;
     }
@@ -70,9 +93,3 @@ public class UserCreationTests extends TestBase {
 }
 
 
-//        for (int i = 0; i < 5; i++) {
-//            result.add(new UserData()
-//                    //.withInitials(randomString(i * 10), randomString(i * 10), randomString(i * 10))
-//                    .withMainInformation(CommonFunctions.randomString(i * 10), CommonFunctions.randomString(i * 10), CommonFunctions.randomString(i * 10), CommonFunctions.randomString(i * 10), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMobileNumber(), CommonFunctions.randomFile("src/test/resources/images")));
-//
-//        }
