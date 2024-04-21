@@ -34,16 +34,16 @@ public class UserCreationTests extends TestBase {
 //            }
 //        }
 
-                for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 5; i++) {
             result.add(new UserData()
                     .withInitials(CommonFunctions.randomString(i * 10), CommonFunctions.randomString(i * 10), CommonFunctions.randomString(i * 10)));
-                    //.withMainInformation(CommonFunctions.randomString(i * 10), CommonFunctions.randomString(i * 10), CommonFunctions.randomString(i * 10), CommonFunctions.randomString(i * 10), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMobileNumber(), CommonFunctions.randomFile("src/test/resources/images"))
+            //.withMainInformation(CommonFunctions.randomString(i * 10), CommonFunctions.randomString(i * 10), CommonFunctions.randomString(i * 10), CommonFunctions.randomString(i * 10), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMobileNumber(), CommonFunctions.randomFile("src/test/resources/images"))
 
         }
 
         var json = "";
         try (var reader = new FileReader("users.json");
-        var breader = new BufferedReader(reader)
+             var breader = new BufferedReader(reader)
         ) {
             var line = breader.readLine();
             while (line != null) {
@@ -53,7 +53,8 @@ public class UserCreationTests extends TestBase {
         }
         //var json = Files.readString(Paths.get("users.json"));
         ObjectMapper mapper = new ObjectMapper();
-        var value = mapper.readValue(json,  new TypeReference<List<UserData>>() {});
+        var value = mapper.readValue(json, new TypeReference<List<UserData>>() {
+        });
         result.addAll(value);
         return result;
     }
@@ -70,7 +71,7 @@ public class UserCreationTests extends TestBase {
         newUsers.sort(compareById);
 
         var expectedList = new ArrayList<>(oldUsers);
-        expectedList.add(user.withId(newUsers.get(newUsers.size() - 1).id()).withAllInformation("", "", "", "", "", "", "", "", "", "", "", "", "", "-", "-", "", "-", "-", "",""));
+        expectedList.add(user.withId(newUsers.get(newUsers.size() - 1).id()).withAllInformation("", "", "", "", "", "", "", "", "", "", "", "", "", "-", "-", "", "-", "-", "", ""));
         expectedList.sort(compareById);
         Assertions.assertEquals(newUsers, expectedList);
     }

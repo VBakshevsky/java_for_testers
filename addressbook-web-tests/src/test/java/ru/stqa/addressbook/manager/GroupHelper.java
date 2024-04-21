@@ -8,7 +8,7 @@ import java.util.List;
 
 public class GroupHelper extends HelperBase {
 
-    public GroupHelper (ApplicationManager manager){
+    public GroupHelper(ApplicationManager manager) {
         super(manager);
     }
 
@@ -27,7 +27,7 @@ public class GroupHelper extends HelperBase {
         returnToGroupsPage();
     }
 
-    public void modifyGroup(GroupData user,GroupData modifiedGroup) {
+    public void modifyGroup(GroupData user, GroupData modifiedGroup) {
         openGroupsPage();
         selectGroup(user);
         initGroupModification();
@@ -35,7 +35,7 @@ public class GroupHelper extends HelperBase {
         submitGroupModification();
         returnToGroupsPage();
     }
-    
+
     public void openGroupsPage() {
         if (!manager.isElementPresent(By.name("new"))) {
             click(By.linkText("groups"));
@@ -43,8 +43,8 @@ public class GroupHelper extends HelperBase {
     }
 
     //public boolean isGroupPresent() {
-        //openGroupsPage();
-        //return manager.isElementPresent(By.name("selected[]"));
+    //openGroupsPage();
+    //return manager.isElementPresent(By.name("selected[]"));
     //}
 
     private void submitGroupCreation() {
@@ -97,7 +97,7 @@ public class GroupHelper extends HelperBase {
         openGroupsPage();
         var groups = new ArrayList<GroupData>();
         var spans = manager.driver.findElements(By.cssSelector("span.group"));
-        for (var span : spans){
+        for (var span : spans) {
             var name = span.getText();
             var checkbox = span.findElement(By.name("selected[]"));
             var id = checkbox.getAttribute("value");

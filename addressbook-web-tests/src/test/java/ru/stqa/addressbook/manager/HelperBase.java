@@ -38,13 +38,13 @@ public class HelperBase {
     protected void attach(By locator, String file) {
         //manager.driver.findElement(locator).sendKeys(Paths.get(file).toAbsolutePath().toString());
         File f = new File(file);
-        if (f.exists()){
+        if (f.exists()) {
             manager.driver.findElement(locator).sendKeys(Paths.get(file).toAbsolutePath().toString());
         }
     }
 
     //protected void dropDownList1(ApplicationManager manager, String list, String user) {
-        //WebElement dropdown = manager.driver.findElement(By.name(list));
-        //dropdown.findElement(By.xpath(".//option[. = '" + user + "']")).click();
+    //WebElement dropdown = manager.driver.findElement(By.name(list));
+    //dropdown.findElement(By.xpath(".//option[. = '" + user + "']")).click();
     //}
 }
