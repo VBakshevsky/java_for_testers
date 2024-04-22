@@ -43,8 +43,4 @@ public class HelperBase {
         }
     }
 
-    //protected void dropDownList1(ApplicationManager manager, String list, String user) {
-    //WebElement dropdown = manager.driver.findElement(By.name(list));
-    //dropdown.findElement(By.xpath(".//option[. = '" + user + "']")).click();
-    //}
 }
