@@ -18,13 +18,13 @@ import java.util.List;
 
 public class Generator {
 
-    @Parameter(names={"--type", "-t"})
+    @Parameter(names = {"--type", "-t"})
     String type;
-    @Parameter(names={"--output", "-o"})
+    @Parameter(names = {"--output", "-o"})
     String output;
-    @Parameter(names={"--format", "-f"})
+    @Parameter(names = {"--format", "-f"})
     String format;
-    @Parameter(names={"--count", "-n"})
+    @Parameter(names = {"--count", "-n"})
     int count;
 
 
@@ -43,14 +43,13 @@ public class Generator {
     }
 
 
-
     private Object generate() {
         if ("groups".equals(type)) {
             return generateGroups();
         } else if ("users".equals(type)) {
             return generateUsers();
         } else {
-            throw  new IllegalArgumentException("Неизвестный тип данныых" + type);
+            throw new IllegalArgumentException("Неизвестный тип данныых" + type);
         }
     }
 
@@ -79,17 +78,19 @@ public class Generator {
             ObjectMapper mapper = new ObjectMapper();
             mapper.enable(SerializationFeature.INDENT_OUTPUT);
             var json = mapper.writeValueAsString(data);
-            try (var writer = new FileWriter(output)){
+            try (var writer = new FileWriter(output)) {
                 writer.write(json);
             }
-        } if ("yaml".equals(format)) {
+        }
+        else if ("yaml".equals(format)) {
             var mapper = new YAMLMapper();
             mapper.writeValue(new File(output), data);
-        } if ("xml".equals(format)) {
+        }
+        else if ("xml".equals(format)) {
             var mapper = new XmlMapper();
             mapper.enable(SerializationFeature.INDENT_OUTPUT);
             mapper.writeValue(new File(output), data);
-        }else {
+        } else {
             throw new IllegalArgumentException("Неизвестный формат данных " + format);
         }
     }
