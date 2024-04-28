@@ -33,19 +33,25 @@ public class UserCreationTests extends TestBase {
         return result;
     }
 
+    public static List<UserData> singleRandomUser() {
+        return List.of(new UserData()
+                .withMainInformation(CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMobileNumber(), CommonFunctions.randomFile("src/test/resources/images")));
+                //.withAllInformationWithoutFullName("", "", "", "", "", "", "", "", "", "", "", "", "", "5", "-", "", "10", "-", "", ""));
+    }
+
     @ParameterizedTest
-    @MethodSource("userProvider")
-    public void canCreateMultipleUsers(UserData user) {
-        var oldUsers = app.users().getListUsers();
+    @MethodSource("singleRandomUser")
+    public void canCreateUsers(UserData user) {
+        var oldUsers = app.jdbc().getDbListUsers();
         app.users().createUser(user);
-        var newUsers = app.users().getListUsers();
+        var newUsers = app.jdbc().getDbListUsers();
         Comparator<UserData> compareById = (o1, o2) -> {
             return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
         };
         newUsers.sort(compareById);
-
+        var maxId = newUsers.get(newUsers.size() - 1).id();
         var expectedList = new ArrayList<>(oldUsers);
-        expectedList.add(user.withId(newUsers.get(newUsers.size() - 1).id()).withAllInformation("", "", "", "", "", "", "", "", "", "", "", "", "", "-", "-", "", "-", "-", "", ""));
+        expectedList.add(user.withId(maxId).withPhotoAndDays("-", "-", ""));
         expectedList.sort(compareById);
         Assertions.assertEquals(newUsers, expectedList);
     }
