@@ -23,7 +23,7 @@ public class UserModificationTests extends TestBase {
         app.users().modifyUser(oldUsers.get(index), testData);
         var newUsers = app.users().getListUsers();
         var expectedList = new ArrayList<>(oldUsers);
-        expectedList.set(index,testData.withId(oldUsers.get(index).id()).withAllInformationWithoutFullName("", "", "", "", "", "", "", "", "", "", "", "", "", "-", "-", "", "-", "-", "",""));
+        expectedList.set(index,testData.withId(oldUsers.get(index).id()).withAllInformationWithoutFullName("", "", "", "", "", "", "", "", "", "", "", "", "", "0", "-", "", "0", "-", "",""));
         Comparator<UserData> compareById = (o1, o2) -> {
             return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
         };

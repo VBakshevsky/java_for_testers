@@ -23,9 +23,24 @@ public class HelperBase {
         manager.driver.findElement(locator).sendKeys(text);
     }
 
-    protected void dropDownList(By locator, String text) {
+    protected void dropDownListDays(By locator, String text) {
         WebElement dropdown = manager.driver.findElement(locator);
-        dropdown.findElement(By.xpath(".//option[. = '" + text + "']")).click();
+        if (text.isEmpty()) {
+            text = dropdown.findElements(By.tagName("option")).get(1).getText();
+        }
+        dropdown.findElement(By.xpath(".//option[@value='" + text + "']")).click();
+        //click(By.cssSelector(String.format("option[value='" + text + "']")));
+    }
+
+
+    protected void dropDownListMonths(By locator, String text) {
+        WebElement dropdown = manager.driver.findElement(locator);
+
+        if (text.isEmpty()) {
+            dropdown.findElement(By.xpath(".//option[. = '-']")).click();
+        } else {
+            dropdown.findElement(By.xpath(".//option[. = '" + text + "']")).click();
+        }
     }
 
     protected void selectAllElements() {

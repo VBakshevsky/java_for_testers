@@ -81,11 +81,11 @@ public class UserHelper extends HelperBase {
         type(By.name("email2"), user.email2());
         type(By.name("email3"), user.email3());
         type(By.name("homepage"), user.homepage());
-        dropDownList(By.name("bday"), user.bday());
-        dropDownList(By.name("bmonth"), user.bmonth());
+        dropDownListDays(By.name("bday"), user.bday());
+        dropDownListMonths(By.name("bmonth"), user.bmonth());
         type(By.name("byear"), user.byear());
-        dropDownList(By.name("aday"), user.aday());
-        dropDownList(By.name("amonth"), user.amonth());
+        dropDownListDays(By.name("aday"), user.aday());
+        dropDownListMonths(By.name("amonth"), user.amonth());
         type(By.name("ayear"), user.ayear());
     }
 

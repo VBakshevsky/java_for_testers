@@ -35,8 +35,8 @@ public class UserCreationTests extends TestBase {
 
     public static List<UserData> singleRandomUser() {
         return List.of(new UserData()
-                .withMainInformation(CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMobileNumber(), CommonFunctions.randomFile("src/test/resources/images")));
-                //.withAllInformationWithoutFullName("", "", "", "", "", "", "", "", "", "", "", "", "", "5", "-", "", "10", "-", "", ""));
+                //.withMainInformation(CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMobileNumber(), CommonFunctions.randomFile("src/test/resources/images")));
+                .withAllInformationWithoutFullName("", "", "", "", "", "", "", "", "", "", "", "", "", "5", "May", "", "10", "March", "", ""));
     }
 
     @ParameterizedTest
@@ -51,7 +51,7 @@ public class UserCreationTests extends TestBase {
         newUsers.sort(compareById);
         var maxId = newUsers.get(newUsers.size() - 1).id();
         var expectedList = new ArrayList<>(oldUsers);
-        expectedList.add(user.withId(maxId).withPhotoAndDays("-", "-", ""));
+        expectedList.add(user.withId(maxId).withPhoto(""));
         expectedList.sort(compareById);
         Assertions.assertEquals(newUsers, expectedList);
     }
