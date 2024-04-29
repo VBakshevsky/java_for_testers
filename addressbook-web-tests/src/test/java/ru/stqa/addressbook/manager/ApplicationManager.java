@@ -13,6 +13,7 @@ public class ApplicationManager {
     private UserHelper users;
     private JdbcHelper jdbc;
     private Properties properties;
+    private HibernateHelper hbm;
 
     public void init(String browser, Properties properties) {
         this.properties = properties;
@@ -58,7 +59,12 @@ public class ApplicationManager {
         }
         return jdbc;
     }
-
+    public HibernateHelper hbm() {
+        if (hbm == null) {
+            hbm = new HibernateHelper(this);
+        }
+        return hbm;
+    }
     protected boolean isElementPresent(By Locator) {
         try {
             driver.findElement(Locator);

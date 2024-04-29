@@ -35,16 +35,16 @@ public class UserCreationTests extends TestBase {
 
     public static List<UserData> singleRandomUser() {
         return List.of(new UserData()
-                //.withMainInformation(CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMobileNumber(), CommonFunctions.randomFile("src/test/resources/images")));
-                .withAllInformationWithoutFullName("", "", "", "", "", "", "", "", "", "", "", "", "", "5", "May", "", "10", "March", "", ""));
+                .withMainInformation(CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMobileNumber(), CommonFunctions.randomFile("src/test/resources/images")));
+                //.withAllInformationWithoutFullName("", "", "", "", "", "", "", "", "", "", "", "", "", "5", "May", "", "10", "March", "", ""));
     }
 
     @ParameterizedTest
     @MethodSource("singleRandomUser")
     public void canCreateUsers(UserData user) {
-        var oldUsers = app.jdbc().getDbListUsers();
+        var oldUsers = app.hbm().getDbListUsers();
         app.users().createUser(user);
-        var newUsers = app.jdbc().getDbListUsers();
+        var newUsers = app.hbm().getDbListUsers();
         Comparator<UserData> compareById = (o1, o2) -> {
             return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
         };
