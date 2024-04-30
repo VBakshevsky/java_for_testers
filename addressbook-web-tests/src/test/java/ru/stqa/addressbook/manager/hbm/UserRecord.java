@@ -33,4 +33,32 @@ public class UserRecord {
     public String ayear;
     public String photo;
 
+    public UserRecord() {
+    }
+
+    public UserRecord(int id, String firstname, String middlename, String lastname, String nickname, String title, String company, String address, String home, String mobile,String work, String fax, String email,String email2,String email3,String homepage,String bday, String bmonth, String byear, String aday, String amonth, String ayear, String photo  ) {
+        this.id = id;
+        this.firstname = firstname;
+        this.middlename = middlename;
+        this.lastname = lastname;
+        this.nickname = nickname;
+        this.title = title;
+        this.company = company;
+        this.address = address;
+        this.home = home;
+        this.mobile = mobile;
+        this.work = work;
+        this.fax = fax;
+        this.email = email;
+        this.email2 = email2;
+        this.email3 = email3;
+        this.homepage = homepage;
+        this.bday = bday;
+        this.bmonth = bmonth;
+        this.byear = byear;
+        this.aday = aday;
+        this.amonth = amonth;
+        this.ayear = ayear;
+        this.photo = photo;
+    }
 }

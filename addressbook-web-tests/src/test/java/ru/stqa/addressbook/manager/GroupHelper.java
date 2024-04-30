@@ -82,7 +82,7 @@ public class GroupHelper extends HelperBase {
         click(By.cssSelector(String.format("input[value='%s']", group.id())));
     }
 
-    public int getCountGroup() {
+    public int getCount() {
         openGroupsPage();
         return manager.driver.findElements(By.name("selected[]")).size();
     }

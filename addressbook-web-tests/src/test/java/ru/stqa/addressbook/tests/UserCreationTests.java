@@ -42,9 +42,9 @@ public class UserCreationTests extends TestBase {
     @ParameterizedTest
     @MethodSource("singleRandomUser")
     public void canCreateUsers(UserData user) {
-        var oldUsers = app.hbm().getDbListUsers();
+        var oldUsers = app.hbm().getUsersList();
         app.users().createUser(user);
-        var newUsers = app.hbm().getDbListUsers();
+        var newUsers = app.hbm().getUsersList();
         Comparator<UserData> compareById = (o1, o2) -> {
             return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
         };

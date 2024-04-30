@@ -20,12 +20,14 @@ public class UserHelper extends HelperBase {
     }
 
     public void removeUser(UserData user) {
+        returnToHomePage();
         selectUser(user);
         removeSelectedUsers();
         returnToHomePage();
     }
 
     public void modifyUser(UserData user,UserData modifiedUser) {
+        returnToHomePage();
         initUserModification(user);
         fillUserForm(modifiedUser);
         submitUserModification();
@@ -33,9 +35,17 @@ public class UserHelper extends HelperBase {
     }
 
     public void removeAllUsers() {
+        returnToHomePage();
         selectAllUsers();
         removeSelectedUsers();
     }
+
+//    protected void selectAllUsers() {
+//        var checkboxes = manager.driver.findElements(By.name("selected[]"));
+//        for (var checkbox : checkboxes) {
+//            checkbox.click();
+//        }
+//    }
 
     private void removeSelectedUsers() {
         click(By.xpath("//input[@value=\'Delete\']"));
@@ -93,7 +103,7 @@ public class UserHelper extends HelperBase {
         click(By.cssSelector(String.format("a[href='edit.php?id=%s']", user.id())));
     }
 
-    public int getCountUsers() {
+    public int getCount() {
         return manager.driver.findElements(By.name("selected[]")).size();
     }
 
