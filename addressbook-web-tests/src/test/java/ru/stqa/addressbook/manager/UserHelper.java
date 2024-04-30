@@ -1,5 +1,7 @@
 package ru.stqa.addressbook.manager;
 
+import org.openqa.selenium.support.ui.Select;
+import ru.stqa.addressbook.model.GroupData;
 import ru.stqa.addressbook.model.UserData;
 import org.openqa.selenium.By;
 
@@ -18,6 +20,22 @@ public class UserHelper extends HelperBase {
         submitUserCreation();
         returnToHomePage();
     }
+    public void createUser(UserData user, GroupData group) {
+        initUserCreation();
+        fillUserForm(user);
+        selectGroup(group);
+        submitUserCreation();
+        returnToHomePage();
+    }
+
+    public void addUserToGroup(UserData user, GroupData group) {
+        returnToHomePage();
+        selectGroupFromHome(group);
+        selectUser(user);
+        addTo();
+        returnToHomePage();
+    }
+
 
     public void removeUser(UserData user) {
         returnToHomePage();
@@ -29,7 +47,6 @@ public class UserHelper extends HelperBase {
     public void modifyUser(UserData user,UserData modifiedUser) {
         returnToHomePage();
         initUserModification(user);
-        fillUserForm(modifiedUser);
         submitUserModification();
         returnToHomePage();
     }
@@ -40,12 +57,10 @@ public class UserHelper extends HelperBase {
         removeSelectedUsers();
     }
 
-//    protected void selectAllUsers() {
-//        var checkboxes = manager.driver.findElements(By.name("selected[]"));
-//        for (var checkbox : checkboxes) {
-//            checkbox.click();
-//        }
-//    }
+
+    private void addTo() {
+        click(By.xpath("//input[@value=\'Add to\']"));
+    }
 
     private void removeSelectedUsers() {
         click(By.xpath("//input[@value=\'Delete\']"));
@@ -122,4 +137,18 @@ public class UserHelper extends HelperBase {
         }
         return users;
     }
+
+    private void selectGroup(GroupData group) {
+        new Select(manager.driver.findElement(By.name("new_group"))).selectByValue(group.id());
+    }
+    private void selectGroupFromHome(GroupData group) {
+        new Select(manager.driver.findElement(By.name("to_group"))).selectByValue(group.id());
+    }
 }
+
+//    protected void selectAllUsers() {
+//        var checkboxes = manager.driver.findElements(By.name("selected[]"));
+//        for (var checkbox : checkboxes) {
+//            checkbox.click();
+//        }
+//    }

@@ -3,6 +3,7 @@ package ru.stqa.addressbook.tests;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import org.junit.jupiter.api.AfterEach;
 import ru.stqa.addressbook.manager.ApplicationManager;
 import org.junit.jupiter.api.BeforeEach;
 import ru.stqa.addressbook.model.GroupData;
@@ -26,6 +27,11 @@ public class TestBase {
             app = new ApplicationManager();
             app.init(System.getProperty("browser", "firefox"),properties);
         }
+    }
+
+    @AfterEach
+    void checkDatabaseConsistency(){
+        app.jdbc().checkConsistency();
     }
     public static void readingAFileFromJsonLineByLineUsers(ArrayList<UserData> result) throws IOException {
         var json = "";

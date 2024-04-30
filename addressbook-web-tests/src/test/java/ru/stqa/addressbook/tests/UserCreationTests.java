@@ -1,6 +1,8 @@
 package ru.stqa.addressbook.tests;
 
+import org.junit.jupiter.api.Test;
 import ru.stqa.addressbook.common.CommonFunctions;
+import ru.stqa.addressbook.model.GroupData;
 import ru.stqa.addressbook.model.UserData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -56,9 +58,31 @@ public class UserCreationTests extends TestBase {
         Assertions.assertEquals(newUsers, expectedList);
     }
 
+
+    @Test
+    public void canCreateUsersInGroup() {
+        var user = new UserData().withMainInformation(CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMobileNumber(), CommonFunctions.randomFile("src/test/resources/images"));
+        if (app.hbm().getGroupCount() == 0) {
+            app.hbm().createGroup(new GroupData("", "group name", "group header", "group footer"));
+        }
+        var group = app.hbm().getGroupList().get(0);
+        var oldRelated = app.hbm().getContactsInGroup(group);
+        app.users().createUser(user, group);
+        var newRelated = app.hbm().getContactsInGroup(group);
+        Comparator<UserData> compareById = (o1, o2) -> {
+            return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
+        };
+        newRelated.sort(compareById);
+        var maxId = newRelated.get(newRelated.size() - 1).id();
+        var expectedList = new ArrayList<>(oldRelated);
+        expectedList.add(user.withId(maxId).withPhoto(""));
+        expectedList.sort(compareById);
+        Assertions.assertEquals(newRelated, expectedList);
+    }
+
     public static List<UserData> negativeUerProvider() {
         var result = new ArrayList<UserData>(List.of(
-                new UserData("", "first name'", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "-", "-", "", "-", "-", "", "")));
+                new UserData("", "first name'", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "0", "-", "", "0", "-", "", "")));
         return result;
     }
 
