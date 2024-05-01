@@ -50,6 +50,15 @@ public class CommonFunctions {
         return "+7" + mobile;
     }
 
+    public static String randomId() {
+        Random rnd = new Random();
+        var id = "";
+        for (int i = 0; i < 3; i++) {
+            id = id + (rnd.nextInt(3));
+        }
+        return id;
+    }
+
     public static String randomFile(String dir) {
         var fileNames = new File(dir).list();
         Random rnd = new Random();

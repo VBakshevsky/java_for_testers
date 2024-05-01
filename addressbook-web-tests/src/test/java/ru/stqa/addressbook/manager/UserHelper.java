@@ -20,6 +20,7 @@ public class UserHelper extends HelperBase {
         submitUserCreation();
         returnToHomePage();
     }
+
     public void createUser(UserData user, GroupData group) {
         initUserCreation();
         fillUserForm(user);
@@ -30,12 +31,11 @@ public class UserHelper extends HelperBase {
 
     public void addUserToGroup(UserData user, GroupData group) {
         returnToHomePage();
-        selectGroupFromHome(group);
+        selectGroupFromAdd(group);
         selectUser(user);
         addTo();
         returnToHomePage();
     }
-
 
     public void removeUser(UserData user) {
         returnToHomePage();
@@ -44,9 +44,10 @@ public class UserHelper extends HelperBase {
         returnToHomePage();
     }
 
-    public void modifyUser(UserData user,UserData modifiedUser) {
+    public void modifyUser(UserData user, UserData modifiedUser) {
         returnToHomePage();
         initUserModification(user);
+        fillUserForm(modifiedUser);
         submitUserModification();
         returnToHomePage();
     }
@@ -57,17 +58,39 @@ public class UserHelper extends HelperBase {
         removeSelectedUsers();
     }
 
+    public void removeUserFromGroup(UserData user, GroupData group) {
+        returnToHomePage();
+        selectGroupFilter(group);
+        selectUser(user);
+        removeSelectedUserFromGroup();
+        returnToHomePage();
+        returnToAllUsers();
+    }
+
+    private void selectGroupFilter(GroupData group) {
+        new Select(manager.driver.findElement(By.name("group"))).selectByValue(group.id());
+    }
+
+    private void returnToAllUsers() {
+        click(By.xpath("//*[@id=\"right\"]/select/option[2]"));
+    }
 
     private void addTo() {
         click(By.xpath("//input[@value=\'Add to\']"));
     }
 
+    private void removeSelectedUserFromGroup() {
+        click(By.name("remove"));
+    }
+
     private void removeSelectedUsers() {
         click(By.xpath("//input[@value=\'Delete\']"));
     }
+
     private void selectAllUsers() {
         click(By.xpath("//input[@id=\'MassCB\']"));
     }
+
     private void selectUser(UserData user) {
         click(By.cssSelector(String.format("input[value='%s']", user.id())));
     }
@@ -94,7 +117,7 @@ public class UserHelper extends HelperBase {
         type(By.name("middlename"), user.middlename());
         type(By.name("lastname"), user.lastname());
         type(By.name("nickname"), user.nickname());
-        attach(By.name("photo"),user.photo());
+        attach(By.name("photo"), user.photo());
         type(By.name("title"), user.title());
         type(By.name("company"), user.company());
         type(By.name("address"), user.address());
@@ -141,9 +164,12 @@ public class UserHelper extends HelperBase {
     private void selectGroup(GroupData group) {
         new Select(manager.driver.findElement(By.name("new_group"))).selectByValue(group.id());
     }
-    private void selectGroupFromHome(GroupData group) {
+
+    private void selectGroupFromAdd(GroupData group) {
         new Select(manager.driver.findElement(By.name("to_group"))).selectByValue(group.id());
     }
+
+
 }
 
 //    protected void selectAllUsers() {

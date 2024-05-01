@@ -37,11 +37,12 @@ public class GroupCreationTests extends TestBase {
     }
 
     public static List<GroupData> singleRandomGroup() {
-         return List.of(new GroupData()
+        return List.of(new GroupData()
                 .withName(CommonFunctions.randomString(10))
                 .withHeader(CommonFunctions.randomString(20))
                 .withFooter(CommonFunctions.randomString(30)));
     }
+
     @ParameterizedTest
     @MethodSource("singleRandomGroup")
     public void canCreateGroups(GroupData group) {
@@ -66,7 +67,6 @@ public class GroupCreationTests extends TestBase {
 //        Assertions.assertEquals(expectedNewList, newUiGroups);
 
     }
-
 
 
     public static List<GroupData> negativeGroupProvider() {

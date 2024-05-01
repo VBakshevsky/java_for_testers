@@ -39,7 +39,7 @@ public class JdbcHelper extends HelperBase {
              var result = statement.executeQuery("SELECT id, firstname, middlename, lastname, nickname, title, company, address, home, mobile, work, fax, email, email2, email3, homepage, bday, bmonth, byear, aday, amonth, ayear FROM `addressbook` ORDER BY `home` DESC")) {
             while (result.next()) {
                 users.add(new UserData()
-                        .withAllInformation(result.getString("id"), result.getString("firstname"), result.getString("middlename"),result.getString("lastname"), result.getString("nickname"), result.getString("title"), result.getString("company"), result.getString("address"), result.getString("home"), result.getString("mobile"), result.getString("work"), result.getString("fax"), result.getString("email"), result.getString("email2"), result.getString("email3"), result.getString("homepage"), result.getString("bday"), result.getString("bmonth"), result.getString("byear"), result.getString("aday"), result.getString("amonth"), result.getString("ayear")));
+                        .withAllInformation(result.getString("id"), result.getString("firstname"), result.getString("middlename"), result.getString("lastname"), result.getString("nickname"), result.getString("title"), result.getString("company"), result.getString("address"), result.getString("home"), result.getString("mobile"), result.getString("work"), result.getString("fax"), result.getString("email"), result.getString("email2"), result.getString("email3"), result.getString("homepage"), result.getString("bday"), result.getString("bmonth"), result.getString("byear"), result.getString("aday"), result.getString("amonth"), result.getString("ayear")));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -51,8 +51,7 @@ public class JdbcHelper extends HelperBase {
         try (var conn = DriverManager.getConnection("jdbc:mysql://localhost/addressbook", "root", "");
              var statement = conn.createStatement();
              var result = statement.executeQuery(
-                     "SELECT * FROM `address_in_groups` ag LEFT JOIN addressbook ab ON ab.id = ag.id WHERE ab.id IS NULL"))
-        {
+                     "SELECT * FROM `address_in_groups` ag LEFT JOIN addressbook ab ON ab.id = ag.id WHERE ab.id IS NULL")) {
             if (result.next()) {
                 throw new IllegalStateException("DB is corrupted");
             }

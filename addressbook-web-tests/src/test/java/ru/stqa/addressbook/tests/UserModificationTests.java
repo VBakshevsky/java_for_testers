@@ -1,6 +1,7 @@
 package ru.stqa.addressbook.tests;
 
 import ru.stqa.addressbook.common.CommonFunctions;
+import ru.stqa.addressbook.manager.hbm.GroupRecord;
 import ru.stqa.addressbook.model.GroupData;
 import ru.stqa.addressbook.model.UserData;
 import org.junit.jupiter.api.Assertions;
@@ -24,7 +25,7 @@ public class UserModificationTests extends TestBase {
         app.users().modifyUser(oldUsers.get(index), testData);
         var newUsers = app.hbm().getUsersList();
         var expectedList = new ArrayList<>(oldUsers);
-        expectedList.set(index,testData.withId(oldUsers.get(index).id()).withPhoto(""));
+        expectedList.set(index, testData.withId(oldUsers.get(index).id()).withPhoto(""));
         Comparator<UserData> compareById = (o1, o2) -> {
             return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
         };
@@ -34,59 +35,35 @@ public class UserModificationTests extends TestBase {
     }
 
     @Test
-    void canAddUserInGroup(){
+    void canAddUserInGroup() {
         if (app.hbm().getUserCount() == 0) {
             app.hbm().createUser(new UserData("", "first name", "middle name", "Last name", "Nickname", "Title", "Company", "Address", "Home", "+791712332111", "Work", "Fax", "test@mail.ru", "test2@mail.ru", "test3@mail.ru", "homepage", "20", "March", "2000", "15", "May", "2001", ""));
         }
         if (app.hbm().getGroupCount() == 0) {
             app.hbm().createGroup(new GroupData("", "group name", "group header", "group footer"));
         }
-        var group = app.hbm().getGroupList();
+        var groups = app.hbm().getGroupList();
         var oldUsers = app.hbm().getUsersList();
         var rnd = new Random();
-        var indexGroup = rnd.nextInt(group.size());
         var index = rnd.nextInt(oldUsers.size());
-        var oldRelated = app.hbm().getContactsInGroup(group.get(indexGroup));
-        app.users().addUserToGroup(oldUsers.get(index), group.get(indexGroup));
-        var newRelated = app.hbm().getContactsInGroup(group.get(indexGroup));
+        var indexGroup = rnd.nextInt(groups.size());
+        var user = oldUsers.get(index);
+        var group = groups.get(indexGroup);
+        var oldRelated = app.hbm().getContactsInGroup(group);
+        var expectedContactListInGroup = new ArrayList<>(oldRelated);
+        if (!expectedContactListInGroup.contains(user)) {
+            expectedContactListInGroup.add(user);
+        } else {
+            app.users().removeUserFromGroup(user, group);
+        }
+        app.users().addUserToGroup(user, group);
+        var newRelated = app.hbm().getContactsInGroup(group);
         Comparator<UserData> compareById = (o1, o2) -> {
             return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
         };
-        newRelated.sort(compareById);
-        var expectedList = new ArrayList<>(oldRelated);
-        if (expectedList.contains(oldUsers.get(index))) {
-            expectedList.sort(compareById);
-            //expectedList.add(oldUsers.get(index).withId(newRelated.get(index).id()));
-        } else {
-            expectedList.add(oldUsers.get(index).withId(newRelated.get(newRelated.size() - 1).id()).withPhoto(""));
-        }
-        Assertions.assertEquals(newRelated, expectedList);
-
-
-
+        var expectedList = new ArrayList<>(newRelated);
+        expectedContactListInGroup.sort(compareById);
+        expectedList.sort(compareById);
+        Assertions.assertEquals(expectedContactListInGroup, expectedList);
     }
 }
-
-
-//void canAddUserInGroup(){
-//    if (app.hbm().getUserCount() == 0) {
-//        app.hbm().createUser(new UserData("", "first name", "middle name", "Last name", "Nickname", "Title", "Company", "Address", "Home", "+791712332111", "Work", "Fax", "test@mail.ru", "test2@mail.ru", "test3@mail.ru", "homepage", "20", "March", "2000", "15", "May", "2001", ""));
-//    }
-//    if (app.hbm().getGroupCount() == 0) {
-//        app.hbm().createGroup(new GroupData("", "group name", "group header", "group footer"));
-//    }
-//    var group = app.hbm().getGroupList();
-//    var oldUsers = app.hbm().getUsersList();
-//    var rnd = new Random();
-//    var indexGroup = rnd.nextInt(group.size());
-//    var index = rnd.nextInt(oldUsers.size());
-//    app.users().addUserToGroup(oldUsers.get(index), group.get(indexGroup));
-//    var newUsers = app.hbm().getUsersList();
-//    var expectedList = new ArrayList<>(oldUsers);
-//    expectedList.set(index,oldUsers.get(index).withId(oldUsers.get(index).id()).withPhoto(""));
-//    Comparator<UserData> compareById = (o1, o2) -> {
-//        return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
-//    };
-//    newUsers.sort(compareById);
-//    expectedList.sort(compareById);
-//    Assertions.assertEquals(newUsers, expectedList);

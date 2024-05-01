@@ -11,7 +11,7 @@ import java.util.Random;
 public class GroupModificationTests extends TestBase {
 
     @Test
-    void canModifyGroup(){
+    void canModifyGroup() {
         if (app.hbm().getGroupCount() == 0) {
             app.hbm().createGroup(new GroupData("", "group name", "group header", "group footer"));
         }
@@ -22,12 +22,12 @@ public class GroupModificationTests extends TestBase {
         app.groups().modifyGroup(oldGroups.get(index), testData);
         var newGroups = app.hbm().getGroupList();
         var expectedList = new ArrayList<>(oldGroups);
-        expectedList.set(index,testData.withId(oldGroups.get(index).id()));
+        expectedList.set(index, testData.withId(oldGroups.get(index).id()));
         Comparator<GroupData> compareById = (o1, o2) -> {
             return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
         };
         newGroups.sort(compareById);
         expectedList.sort(compareById);
-        Assertions.assertEquals(newGroups,expectedList);
+        Assertions.assertEquals(newGroups, expectedList);
     }
 }

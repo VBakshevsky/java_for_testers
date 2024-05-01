@@ -59,12 +59,14 @@ public class ApplicationManager {
         }
         return jdbc;
     }
+
     public HibernateHelper hbm() {
         if (hbm == null) {
             hbm = new HibernateHelper(this);
         }
         return hbm;
     }
+
     protected boolean isElementPresent(By Locator) {
         try {
             driver.findElement(Locator);

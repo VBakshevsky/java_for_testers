@@ -108,7 +108,12 @@ public class HibernateHelper extends HelperBase {
 
     public List<UserData> getContactsInGroup(GroupData group) {
         return sessionFactory.fromSession(session -> {
-            return convertListUsers(session.get(GroupRecord.class, group.id()).contacts);
+            return convertListUsers(session.get(GroupRecord.class, group.id()).users);
         });
+    }
+
+    public boolean isUsersInGroup(GroupData group, UserData user) {
+        var usersInGroup = getContactsInGroup(group);
+        return usersInGroup.contains(user);
     }
 }

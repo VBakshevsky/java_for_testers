@@ -1,9 +1,8 @@
 package ru.stqa.addressbook.manager.hbm;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "addressbook")
@@ -36,7 +35,7 @@ public class UserRecord {
     public UserRecord() {
     }
 
-    public UserRecord(int id, String firstname, String middlename, String lastname, String nickname, String title, String company, String address, String home, String mobile,String work, String fax, String email,String email2,String email3,String homepage,String bday, String bmonth, String byear, String aday, String amonth, String ayear, String photo  ) {
+    public UserRecord(int id, String firstname, String middlename, String lastname, String nickname, String title, String company, String address, String home, String mobile, String work, String fax, String email, String email2, String email3, String homepage, String bday, String bmonth, String byear, String aday, String amonth, String ayear, String photo) {
         this.id = id;
         this.firstname = firstname;
         this.middlename = middlename;

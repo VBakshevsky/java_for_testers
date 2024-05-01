@@ -23,7 +23,8 @@ public class GroupRecord {
     @JoinTable(name = "address_in_groups",
             joinColumns = @JoinColumn(name = "group_id"),
             inverseJoinColumns = @JoinColumn(name = "id"))
-    public List<UserRecord> contacts;
+    public List<UserRecord> users;
+
     public GroupRecord() {
     }
 
