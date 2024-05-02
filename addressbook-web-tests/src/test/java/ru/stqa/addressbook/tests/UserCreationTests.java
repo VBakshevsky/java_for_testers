@@ -66,9 +66,9 @@ public class UserCreationTests extends TestBase {
             app.hbm().createGroup(new GroupData("", "group name", "group header", "group footer"));
         }
         var group = app.hbm().getGroupList().get(0);
-        var oldRelated = app.hbm().getContactsInGroup(group);
+        var oldRelated = app.hbm().getUsersInGroup(group);
         app.users().createUser(user, group);
-        var newRelated = app.hbm().getContactsInGroup(group);
+        var newRelated = app.hbm().getUsersInGroup(group);
         Comparator<UserData> compareById = (o1, o2) -> {
             return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
         };

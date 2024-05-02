@@ -1,6 +1,5 @@
 package ru.stqa.addressbook.tests;
 
-import ru.stqa.addressbook.common.CommonFunctions;
 import ru.stqa.addressbook.model.GroupData;
 import ru.stqa.addressbook.model.UserData;
 import org.junit.jupiter.api.Assertions;
@@ -51,14 +50,14 @@ public class UserRemovalTests extends TestBase {
         var indexGroup = rnd.nextInt(groups.size());
         var user = oldUsers.get(index);
         var group = groups.get(indexGroup);
-        var oldRelated = app.hbm().getContactsInGroup(group);
+        var oldRelated = app.hbm().getUsersInGroup(group);
         var expectedUserListInGroup = new ArrayList<>(oldRelated);
         expectedUserListInGroup.remove(user);
         if (!app.hbm().isUsersInGroup(group, user)) {
             app.users().addUserToGroup(user, group);
         }
         app.users().removeUserFromGroup(user, group);
-        var newRelated = app.hbm().getContactsInGroup(group);
+        var newRelated = app.hbm().getUsersInGroup(group);
         Comparator<UserData> compareById = (o1, o2) -> {
             return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
         };

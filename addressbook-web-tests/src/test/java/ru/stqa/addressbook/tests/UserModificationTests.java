@@ -1,7 +1,6 @@
 package ru.stqa.addressbook.tests;
 
 import ru.stqa.addressbook.common.CommonFunctions;
-import ru.stqa.addressbook.manager.hbm.GroupRecord;
 import ru.stqa.addressbook.model.GroupData;
 import ru.stqa.addressbook.model.UserData;
 import org.junit.jupiter.api.Assertions;
@@ -49,21 +48,21 @@ public class UserModificationTests extends TestBase {
         var indexGroup = rnd.nextInt(groups.size());
         var user = oldUsers.get(index);
         var group = groups.get(indexGroup);
-        var oldRelated = app.hbm().getContactsInGroup(group);
-        var expectedContactListInGroup = new ArrayList<>(oldRelated);
-        if (!expectedContactListInGroup.contains(user)) {
-            expectedContactListInGroup.add(user);
+        var oldRelated = app.hbm().getUsersInGroup(group);
+        var expectedUserListInGroup = new ArrayList<>(oldRelated);
+        if (!expectedUserListInGroup.contains(user)) {
+            expectedUserListInGroup.add(user);
         } else {
             app.users().removeUserFromGroup(user, group);
         }
         app.users().addUserToGroup(user, group);
-        var newRelated = app.hbm().getContactsInGroup(group);
+        var newRelated = app.hbm().getUsersInGroup(group);
         Comparator<UserData> compareById = (o1, o2) -> {
             return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
         };
         var expectedList = new ArrayList<>(newRelated);
-        expectedContactListInGroup.sort(compareById);
+        expectedUserListInGroup.sort(compareById);
         expectedList.sort(compareById);
-        Assertions.assertEquals(expectedContactListInGroup, expectedList);
+        Assertions.assertEquals(expectedUserListInGroup, expectedList);
     }
 }
