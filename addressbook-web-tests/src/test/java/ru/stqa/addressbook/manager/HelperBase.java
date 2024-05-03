@@ -44,10 +44,14 @@ public class HelperBase {
     }
 
     protected void selectAllElements() {
-        var checkboxes = manager.driver.findElements(By.name("selected[]"));
-        for (var checkbox : checkboxes) {
-            checkbox.click();
-        }
+        manager.driver
+                .findElements(By.name("selected[]"))
+                .forEach(WebElement::click);
+//        var checkboxes = manager.driver.findElements(By.name("selected[]"));
+//        for (var checkbox : checkboxes) {
+//            checkbox.click();
+//        }
+
     }
 
     protected void attach(By locator, String file) {

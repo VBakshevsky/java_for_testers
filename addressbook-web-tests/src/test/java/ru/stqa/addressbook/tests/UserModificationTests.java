@@ -65,4 +65,5 @@ public class UserModificationTests extends TestBase {
         expectedList.sort(compareById);
         Assertions.assertEquals(expectedUserListInGroup, expectedList);
     }
+
 }
