@@ -16,14 +16,14 @@ public class UserInfoTests extends TestBase {
         if (app.hbm().getUserCount() == 0) {
             app.hbm().createUser(new UserData().withMainInformation(CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomMail(), CommonFunctions.randomMail(), "+791711122233", "+791733322211", "+791722233311", CommonFunctions.randomFile("src/test/resources/images"), CommonFunctions.randomMail()));
         }
-        app.users().returnToHomePage();
         var users = app.hbm().getUsersList();
-        var user = users.get(0);
-        var phones = app.users().getPhones(user);
-        var expected = Stream.of(user.home(), user.mobile(), user.work())
-                .filter(s -> s != null && !"".equals(s))
-                .collect(Collectors.joining("\n"));
-        Assertions.assertEquals(expected,phones);
+        var expected = users.stream().collect(Collectors.toMap(user -> user.id(), user ->
+                Stream.of(user.home(), user.mobile(), user.work())
+                        .filter(s -> s != null && !"".equals(s))
+                        .collect(Collectors.joining("\n"))
+        ));
+        var phones = app.users().getPhones();
+        Assertions.assertEquals(expected, phones);
     }
 
     @Test
@@ -31,14 +31,15 @@ public class UserInfoTests extends TestBase {
         if (app.hbm().getUserCount() == 0) {
             app.hbm().createUser(new UserData().withMainInformation(CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomMail(), CommonFunctions.randomMail(), "+791711122233", "+791733322211", "+791722233311", CommonFunctions.randomFile("src/test/resources/images"), CommonFunctions.randomMail()));
         }
-        app.users().returnToHomePage();
         var users = app.hbm().getUsersList();
-        var user = users.get(0);
-        var address = app.users().getAddress(user);
-        var expected = Stream.of(user.address())
-                .filter(s -> s != null && !"".equals(s))
-                .collect(Collectors.joining("\n"));
-        Assertions.assertEquals(expected,address);
+        var expected = users.stream().collect(Collectors.toMap(user -> user.id(), user ->
+            Stream.of(user.address())
+                    .filter(s -> s != null && !"".equals(s))
+                    .map(s -> s.replace("\r\n", "\n"))
+                    .collect(Collectors.joining("\n"))
+        ));
+        var address = app.users().getAddress();
+        Assertions.assertEquals(expected, address);
     }
 
     @Test
@@ -46,13 +47,13 @@ public class UserInfoTests extends TestBase {
         if (app.hbm().getUserCount() == 0) {
             app.hbm().createUser(new UserData().withMainInformation(CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomMail(), CommonFunctions.randomMail(), "+791711122233", "+791733322211", "+791722233311", CommonFunctions.randomFile("src/test/resources/images"), CommonFunctions.randomMail()));
         }
-        app.users().returnToHomePage();
         var users = app.hbm().getUsersList();
-        var user = users.get(0);
-        var email = app.users().getEmails(user);
-        var expected = Stream.of(user.email(),user.email2(),user.email3())
-                .filter(s -> s != null && !"".equals(s))
-                .collect(Collectors.joining("\n"));
-        Assertions.assertEquals(expected,email);
+        var expected = users.stream().collect(Collectors.toMap(user -> user.id(), user ->
+            Stream.of(user.email(), user.email2(), user.email3())
+                    .filter(s -> s != null && !"".equals(s))
+                    .collect(Collectors.joining("\n"))
+        ));
+        var email = app.users().getEmails();
+            Assertions.assertEquals(expected, email);
     }
 }

@@ -1,12 +1,15 @@
 package ru.stqa.addressbook.manager;
 
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import ru.stqa.addressbook.model.GroupData;
 import ru.stqa.addressbook.model.UserData;
 import org.openqa.selenium.By;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class UserHelper extends HelperBase {
@@ -196,6 +199,42 @@ public class UserHelper extends HelperBase {
     public String getAddress(UserData user) {
         return manager.driver.findElement(By.xpath(
                 String.format("//input[@id='%s']/../../td[4]", user.id()))).getText();
+    }
+
+    public Map<String, String> getPhones() {
+        returnToHomePage();
+        var result = new HashMap<String, String>();
+        List<WebElement> rows = manager.driver.findElements(By.name("entry"));
+        for (WebElement row : rows) {
+            var id = row.findElement(By.tagName("input")).getAttribute("id");
+            var phones = row.findElements(By.tagName("td")).get(5).getText();
+            result.put(id,phones);
+        }
+        return result;
+    }
+
+    public Map<String, String> getEmails() {
+        returnToHomePage();
+        var result = new HashMap<String, String>();
+        List<WebElement> rows = manager.driver.findElements(By.name("entry"));
+        for (WebElement row : rows) {
+            var id = row.findElement(By.tagName("input")).getAttribute("id");
+            var emails = row.findElements(By.tagName("td")).get(4).getText();
+            result.put(id,emails);
+        }
+        return result;
+    }
+
+    public Map<String, String> getAddress() {
+        returnToHomePage();
+        var result = new HashMap<String, String>();
+        List<WebElement> rows = manager.driver.findElements(By.name("entry"));
+        for (WebElement row : rows) {
+            var id = row.findElement(By.tagName("input")).getAttribute("value");
+            var addresses = row.findElements(By.tagName("td")).get(3).getText();
+            result.put(id,addresses);
+        }
+        return result;
     }
 }
 
