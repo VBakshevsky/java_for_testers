@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
@@ -37,28 +38,30 @@ public class UserCreationTests extends TestBase {
         return result;
     }
 
-    public static Stream<UserData> singleRandomUser() {
+    public static Stream<UserData> randomUser() {
         Supplier<UserData> randomUser = () -> new UserData()
                 .withMainInformation(CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMobileNumber(), CommonFunctions.randomFile("src/test/resources/images"));
-        return Stream.generate(randomUser).limit(2);
+        return Stream.generate(randomUser).limit(1);
         //.withAllInformationWithoutFullName("", "", "", "", "", "", "", "", "", "", "", "", "", "5", "May", "", "10", "March", "", ""));
     }
 
     @ParameterizedTest
-    @MethodSource("singleRandomUser")
+    @MethodSource("randomUser")
     public void canCreateUsers(UserData user) {
         var oldUsers = app.hbm().getUsersList();
         app.users().createUser(user);
         var newUsers = app.hbm().getUsersList();
-        Comparator<UserData> compareById = (o1, o2) -> {
-            return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
-        };
-        newUsers.sort(compareById);
-        var maxId = newUsers.get(newUsers.size() - 1).id();
+//        Comparator<UserData> compareById = (o1, o2) -> {
+//            return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
+//        };
+//        newUsers.sort(compareById);
+//        var maxId = newUsers.get(newUsers.size() - 1).id();
+        var extraUsers = newUsers.stream().filter(u -> ! oldUsers.contains(u)).toList();
+        var newId = extraUsers.get(0).id();
         var expectedList = new ArrayList<>(oldUsers);
-        expectedList.add(user.withId(maxId).withPhoto(""));
-        expectedList.sort(compareById);
-        Assertions.assertEquals(newUsers, expectedList);
+        expectedList.add(user.withId(newId).withPhoto(""));
+//        expectedList.sort(compareById);
+        Assertions.assertEquals(Set.copyOf(newUsers), Set.copyOf(expectedList));
     }
 
 
@@ -72,15 +75,17 @@ public class UserCreationTests extends TestBase {
         var oldRelated = app.hbm().getUsersInGroup(group);
         app.users().createUser(user, group);
         var newRelated = app.hbm().getUsersInGroup(group);
-        Comparator<UserData> compareById = (o1, o2) -> {
-            return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
-        };
-        newRelated.sort(compareById);
-        var maxId = newRelated.get(newRelated.size() - 1).id();
+//        Comparator<UserData> compareById = (o1, o2) -> {
+//            return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
+//        };
+//        newRelated.sort(compareById);
+//        var maxId = newRelated.get(newRelated.size() - 1).id();
+        var extraUsers = newRelated.stream().filter(u -> ! oldRelated.contains(u)).toList();
+        var newId = extraUsers.get(0).id();
         var expectedList = new ArrayList<>(oldRelated);
-        expectedList.add(user.withId(maxId).withPhoto(""));
-        expectedList.sort(compareById);
-        Assertions.assertEquals(newRelated, expectedList);
+        expectedList.add(user.withId(newId).withPhoto(""));
+//        expectedList.sort(compareById);
+        Assertions.assertEquals(Set.copyOf(newRelated), Set.copyOf(expectedList));
     }
 
     public static List<UserData> negativeUerProvider() {

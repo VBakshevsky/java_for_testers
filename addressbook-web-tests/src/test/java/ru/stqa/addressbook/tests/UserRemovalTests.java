@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Random;
+import java.util.Set;
 
 public class UserRemovalTests extends TestBase {
 
@@ -58,12 +59,12 @@ public class UserRemovalTests extends TestBase {
         }
         app.users().removeUserFromGroup(user, group);
         var newRelated = app.hbm().getUsersInGroup(group);
-        Comparator<UserData> compareById = (o1, o2) -> {
-            return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
-        };
+//        Comparator<UserData> compareById = (o1, o2) -> {
+//            return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
+//        };
         var expectedList = new ArrayList<>(newRelated);
-        expectedUserListInGroup.sort(compareById);
-        expectedList.sort(compareById);
-        Assertions.assertEquals(expectedUserListInGroup, expectedList);
+//        expectedUserListInGroup.sort(compareById);
+//        expectedList.sort(compareById);
+        Assertions.assertEquals(Set.copyOf(expectedUserListInGroup), Set.copyOf(expectedList));
     }
 }

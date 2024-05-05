@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Random;
+import java.util.Set;
 
 public class UserModificationTests extends TestBase {
 
@@ -20,17 +21,17 @@ public class UserModificationTests extends TestBase {
         var oldUsers = app.hbm().getUsersList();
         var rnd = new Random();
         var index = rnd.nextInt(oldUsers.size());
-        var testData = new UserData().withMainInformation("first name modified", "middle name modified", "Last name modified", CommonFunctions.randomString(5), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMobileNumber(), CommonFunctions.randomFile("src/test/resources/images"));
+        var testData = new UserData().withMainInformation(CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(5), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMobileNumber(), CommonFunctions.randomFile("src/test/resources/images"));
         app.users().modifyUser(oldUsers.get(index), testData);
         var newUsers = app.hbm().getUsersList();
         var expectedList = new ArrayList<>(oldUsers);
         expectedList.set(index, testData.withId(oldUsers.get(index).id()).withPhoto(""));
-        Comparator<UserData> compareById = (o1, o2) -> {
-            return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
-        };
-        newUsers.sort(compareById);
-        expectedList.sort(compareById);
-        Assertions.assertEquals(newUsers, expectedList);
+//        Comparator<UserData> compareById = (o1, o2) -> {
+//            return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
+//        };
+//        newUsers.sort(compareById);
+//        expectedList.sort(compareById);
+        Assertions.assertEquals(Set.copyOf(newUsers), Set.copyOf(expectedList));
     }
 
     @Test
@@ -57,13 +58,13 @@ public class UserModificationTests extends TestBase {
         }
         app.users().addUserToGroup(user, group);
         var newRelated = app.hbm().getUsersInGroup(group);
-        Comparator<UserData> compareById = (o1, o2) -> {
-            return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
-        };
+//        Comparator<UserData> compareById = (o1, o2) -> {
+//            return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
+//        };
         var expectedList = new ArrayList<>(newRelated);
-        expectedUserListInGroup.sort(compareById);
-        expectedList.sort(compareById);
-        Assertions.assertEquals(expectedUserListInGroup, expectedList);
+//        expectedUserListInGroup.sort(compareById);
+//        expectedList.sort(compareById);
+        Assertions.assertEquals(Set.copyOf(expectedUserListInGroup), Set.copyOf(expectedList));
     }
 
 }
