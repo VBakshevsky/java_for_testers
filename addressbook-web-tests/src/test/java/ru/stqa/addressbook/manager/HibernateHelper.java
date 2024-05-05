@@ -10,6 +10,7 @@ import ru.stqa.addressbook.model.UserData;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class HibernateHelper extends HelperBase {
@@ -26,12 +27,13 @@ public class HibernateHelper extends HelperBase {
                 .buildSessionFactory();
     }
 
-    static List<GroupData> convertList(List<GroupRecord> records) {
-        List<GroupData> result = new ArrayList<>();
-        for (var record : records) {
-            result.add(convertGroup(record));
-        }
-        return result;
+    static List<GroupData> convertGroupList(List<GroupRecord> records) {
+        return records.stream().map(g -> convertGroup(g)).collect(Collectors.toList());
+//        List<GroupData> result = new ArrayList<>();
+//        for (var record : records) {
+//            result.add(convertGroup(record));
+//        }
+//        return result;
     }
 
     private static GroupData convertGroup(GroupRecord record) {
@@ -47,7 +49,7 @@ public class HibernateHelper extends HelperBase {
     }
 
     public List<GroupData> getGroupList() {
-        return convertList(sessionFactory.fromSession(session -> {
+        return convertGroupList(sessionFactory.fromSession(session -> {
             return session.createQuery("from GroupRecord", GroupRecord.class).list();
         }));
     }
@@ -66,12 +68,13 @@ public class HibernateHelper extends HelperBase {
         });
     }
 
-    static List<UserData> convertListUsers(List<UserRecord> records) {
-        List<UserData> result = new ArrayList<>();
-        for (var record : records) {
-            result.add(convertUsers(record));
-        }
-        return result;
+    static List<UserData> convertUsersList(List<UserRecord> records) {
+        return records.stream().map(g -> convertUsers(g)).collect(Collectors.toList());
+//        List<UserData> result = new ArrayList<>();
+//        for (var record : records) {
+//            result.add(convertUsers(record));
+//        }
+//        return result;
     }
 
     private static UserData convertUsers(UserRecord record) {
@@ -87,7 +90,7 @@ public class HibernateHelper extends HelperBase {
     }
 
     public List<UserData> getUsersList() {
-        return convertListUsers(sessionFactory.fromSession(session -> {
+        return convertUsersList(sessionFactory.fromSession(session -> {
             return session.createQuery("from UserRecord", UserRecord.class).list();
         }));
     }
@@ -108,7 +111,7 @@ public class HibernateHelper extends HelperBase {
 
     public List<UserData> getUsersInGroup(GroupData group) {
         return sessionFactory.fromSession(session -> {
-            return convertListUsers(session.get(GroupRecord.class, group.id()).users);
+            return convertUsersList(session.get(GroupRecord.class, group.id()).users);
         });
     }
 

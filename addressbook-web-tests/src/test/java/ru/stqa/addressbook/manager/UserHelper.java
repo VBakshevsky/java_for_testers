@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserHelper extends HelperBase {
 
@@ -146,19 +147,31 @@ public class UserHelper extends HelperBase {
     }
 
     public List<UserData> getListUsers() {
-        var users = new ArrayList<UserData>();
+//        var users = new ArrayList<UserData>();
         var trs = manager.driver.findElements(By.cssSelector("tr[name=\"entry\"]"));
-        for (var tr : trs) {
-            var cells = tr.findElements(By.tagName("td"));
-            var lastname = cells.get(1).getText();
-            var firstname = cells.get(2).getText();
-            //var lastname = tr.findElement(By.xpath(".//td[2]")).getText();
-            //var firstname = tr.findElement(By.xpath(".//td[3]")).getText();
-            var checkbox = tr.findElement(By.name("selected[]"));
-            var id = checkbox.getAttribute("value");
-            users.add(new UserData().withId(id).withFirstName(firstname).withLastName(lastname));
-        }
-        return users;
+        return trs.stream()
+                .map(tr -> {
+                    var cells = tr.findElements(By.tagName("td"));
+                    var lastname = cells.get(1).getText();
+                    var firstname = cells.get(2).getText();
+                    //var lastname = tr.findElement(By.xpath(".//td[2]")).getText();
+                    //var firstname = tr.findElement(By.xpath(".//td[3]")).getText();
+                    var checkbox = tr.findElement(By.name("selected[]"));
+                    var id = checkbox.getAttribute("value");
+                    return new UserData().withId(id).withFirstName(firstname).withLastName(lastname);
+                })
+                .collect(Collectors.toList());
+//        for (var tr : trs) {
+//            var cells = tr.findElements(By.tagName("td"));
+//            var lastname = cells.get(1).getText();
+//            var firstname = cells.get(2).getText();
+//            //var lastname = tr.findElement(By.xpath(".//td[2]")).getText();
+//            //var firstname = tr.findElement(By.xpath(".//td[3]")).getText();
+//            var checkbox = tr.findElement(By.name("selected[]"));
+//            var id = checkbox.getAttribute("value");
+//            users.add(new UserData().withId(id).withFirstName(firstname).withLastName(lastname));
+//        }
+//        return users;
     }
 
     private void selectGroup(GroupData group) {
