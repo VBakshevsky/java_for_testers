@@ -105,7 +105,7 @@ public class UserHelper extends HelperBase {
     }
 
 
-    private void returnToHomePage() {
+    public void returnToHomePage() {
         click(By.linkText("home"));
     }
 
@@ -183,7 +183,22 @@ public class UserHelper extends HelperBase {
     }
 
 
+    public String getPhones(UserData user) {
+        return manager.driver.findElement(By.xpath(
+                String.format("//input[@id='%s']/../../td[6]", user.id()))).getText();
+    }
+
+    public String getEmails(UserData user) {
+        return manager.driver.findElement(By.xpath(
+                String.format("//input[@id='%s']/../../td[5]", user.id()))).getText();
+    }
+
+    public String getAddress(UserData user) {
+        return manager.driver.findElement(By.xpath(
+                String.format("//input[@id='%s']/../../td[4]", user.id()))).getText();
+    }
 }
+
 
 //    protected void selectAllUsers() {
 //        var checkboxes = manager.driver.findElements(By.name("selected[]"));

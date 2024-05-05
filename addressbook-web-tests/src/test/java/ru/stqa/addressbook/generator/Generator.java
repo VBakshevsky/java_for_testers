@@ -13,8 +13,6 @@ import ru.stqa.addressbook.model.UserData;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -82,7 +80,7 @@ public class Generator {
 
     private Object generateUsers() {
         return generateData(() -> new UserData()
-                .withMainInformation(CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMobileNumber(), CommonFunctions.randomFile("src/test/resources/images")));
+                .withMainInformation(CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMobileNumber(), CommonFunctions.randomMobileNumber(), CommonFunctions.randomMobileNumber(), CommonFunctions.randomFile("src/test/resources/images"), CommonFunctions.randomMail()));
 //        var result = new ArrayList<UserData>();
 //        for (int i = 0; i < count; i++) {
 //            result.add(new UserData()

@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Random;
 import java.util.Set;
 
@@ -16,12 +15,12 @@ public class UserModificationTests extends TestBase {
     @Test
     void canModifyUser() {
         if (app.hbm().getUserCount() == 0) {
-            app.hbm().createUser(new UserData("", "first name", "middle name", "Last name", "Nickname", "Title", "Company", "Address", "Home", "+791712332111", "Work", "Fax", "test@mail.ru", "test2@mail.ru", "test3@mail.ru", "homepage", "20", "March", "2000", "15", "May", "2001", ""));
+            app.hbm().createUser(new UserData().withMainInformation(CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMobileNumber(), CommonFunctions.randomMobileNumber(), CommonFunctions.randomMobileNumber(), CommonFunctions.randomFile("src/test/resources/images"), CommonFunctions.randomMail()));
         }
         var oldUsers = app.hbm().getUsersList();
         var rnd = new Random();
         var index = rnd.nextInt(oldUsers.size());
-        var testData = new UserData().withMainInformation(CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(5), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMobileNumber(), CommonFunctions.randomFile("src/test/resources/images"));
+        var testData = new UserData().withMainInformation(CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(5), CommonFunctions.randomString(10), CommonFunctions.randomMail(), CommonFunctions.randomMail(), "", CommonFunctions.randomMobileNumber(), "", CommonFunctions.randomFile("src/test/resources/images"), CommonFunctions.randomMail());
         app.users().modifyUser(oldUsers.get(index), testData);
         var newUsers = app.hbm().getUsersList();
         var expectedList = new ArrayList<>(oldUsers);
