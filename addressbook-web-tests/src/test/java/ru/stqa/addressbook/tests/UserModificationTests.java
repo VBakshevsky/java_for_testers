@@ -1,7 +1,6 @@
 package ru.stqa.addressbook.tests;
 
 import ru.stqa.addressbook.common.CommonFunctions;
-import ru.stqa.addressbook.model.GroupData;
 import ru.stqa.addressbook.model.UserData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -14,9 +13,7 @@ public class UserModificationTests extends TestBase {
 
     @Test
     void canModifyUser() {
-        if (app.hbm().getUserCount() == 0) {
-            app.hbm().createUser(new UserData().withMainInformation(CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMobileNumber(), CommonFunctions.randomMobileNumber(), CommonFunctions.randomMobileNumber(), CommonFunctions.randomFile("src/test/resources/images"), CommonFunctions.randomMail()));
-        }
+        createRandomUser();
         var oldUsers = app.hbm().getUsersList();
         var rnd = new Random();
         var index = rnd.nextInt(oldUsers.size());
@@ -35,12 +32,8 @@ public class UserModificationTests extends TestBase {
 
     @Test
     void canAddUserInGroup() {
-        if (app.hbm().getUserCount() == 0) {
-            app.hbm().createUser(new UserData("", "first name", "middle name", "Last name", "Nickname", "Title", "Company", "Address", "Home", "+791712332111", "Work", "Fax", "test@mail.ru", "test2@mail.ru", "test3@mail.ru", "homepage", "20", "March", "2000", "15", "May", "2001", ""));
-        }
-        if (app.hbm().getGroupCount() == 0) {
-            app.hbm().createGroup(new GroupData("", "group name", "group header", "group footer"));
-        }
+        createRandomUser();
+        createRandomGroup();
         var groups = app.hbm().getGroupList();
         var oldUsers = app.hbm().getUsersList();
         var rnd = new Random();

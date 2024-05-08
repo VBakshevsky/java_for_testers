@@ -67,9 +67,7 @@ public class UserCreationTests extends TestBase {
     @Test
     public void canCreateUsersInGroup() {
         var user = new UserData().withMainInformation(CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMobileNumber(), CommonFunctions.randomMobileNumber(), CommonFunctions.randomMobileNumber(), CommonFunctions.randomFile("src/test/resources/images"), CommonFunctions.randomMail());
-        if (app.hbm().getGroupCount() == 0) {
-            app.hbm().createGroup(new GroupData("", "group name", "group header", "group footer"));
-        }
+        createRandomGroup();
         var group = app.hbm().getGroupList().get(0);
         var oldRelated = app.hbm().getUsersInGroup(group);
         app.users().createUser(user, group);
