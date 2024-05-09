@@ -249,19 +249,6 @@ public class UserHelper extends HelperBase {
         return result;
     }
 
-    public Object getPhonesFromEditForm(UserData user) {
-        returnToHomePage();
-        initUserModification(user);
-        var home = manager.driver.findElement(By.name("home")).getAttribute("value");
-        var mobile = manager.driver.findElement(By.name("mobile")).getAttribute("value");
-        var work = manager.driver.findElement(By.name("work")).getAttribute("value");
-        var phone2 = manager.driver.findElement(By.name("phone2")).getAttribute("value");
-        var phoneResult = Stream.of(home, mobile, work, phone2)
-                .filter(s -> s != null && !"".equals(s))
-                .collect(Collectors.joining("\n"));
-        return phoneResult;
-    }
-
     public Object getPhonesEmailsAndAddressFromEditForm(UserData user) {
         returnToHomePage();
         initUserModification(user);
