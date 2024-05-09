@@ -54,8 +54,8 @@ public class Generator {
         }
     }
 
-    private Object generateData (Supplier<Object> dataSupplier) {
-        return  Stream.generate(dataSupplier).limit(count).collect(Collectors.toList());
+    private Object generateData(Supplier<Object> dataSupplier) {
+        return Stream.generate(dataSupplier).limit(count).collect(Collectors.toList());
 //        var result = new ArrayList<Object>();
 //        for (int i = 0; i < count; i++) {
 //            result.add(dataSupplier.get());

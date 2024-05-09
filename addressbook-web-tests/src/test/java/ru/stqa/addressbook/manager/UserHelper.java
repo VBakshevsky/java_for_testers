@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class UserHelper extends HelperBase {
 
@@ -150,7 +151,6 @@ public class UserHelper extends HelperBase {
     }
 
     public List<UserData> getListUsers() {
-//        var users = new ArrayList<UserData>();
         var trs = manager.driver.findElements(By.cssSelector("tr[name=\"entry\"]"));
         return trs.stream()
                 .map(tr -> {
@@ -164,6 +164,7 @@ public class UserHelper extends HelperBase {
                     return new UserData().withId(id).withFirstName(firstname).withLastName(lastname);
                 })
                 .collect(Collectors.toList());
+        //        var users = new ArrayList<UserData>();
 //        for (var tr : trs) {
 //            var cells = tr.findElements(By.tagName("td"));
 //            var lastname = cells.get(1).getText();
@@ -191,6 +192,17 @@ public class UserHelper extends HelperBase {
                 String.format("//input[@id='%s']/../../td[6]", user.id()))).getText();
     }
 
+    public String getPhonesEmailsAndAddress(UserData user) {
+        returnToHomePage();
+        var address = manager.driver.findElement(By.xpath(
+                String.format("//input[@id='%s']/../../td[4]", user.id()))).getText();
+        var email = manager.driver.findElement(By.xpath(
+                String.format("//input[@id='%s']/../../td[5]", user.id()))).getText();
+        var phone = manager.driver.findElement(By.xpath(
+                String.format("//input[@id='%s']/../../td[6]", user.id()))).getText();
+        return address + "\n" + email + "\n" + phone + "\n";
+    }
+
     public String getEmails(UserData user) {
         return manager.driver.findElement(By.xpath(
                 String.format("//input[@id='%s']/../../td[5]", user.id()))).getText();
@@ -208,7 +220,7 @@ public class UserHelper extends HelperBase {
         for (WebElement row : rows) {
             var id = row.findElement(By.tagName("input")).getAttribute("id");
             var phones = row.findElements(By.tagName("td")).get(5).getText();
-            result.put(id,phones);
+            result.put(id, phones);
         }
         return result;
     }
@@ -220,7 +232,7 @@ public class UserHelper extends HelperBase {
         for (WebElement row : rows) {
             var id = row.findElement(By.tagName("input")).getAttribute("id");
             var emails = row.findElements(By.tagName("td")).get(4).getText();
-            result.put(id,emails);
+            result.put(id, emails);
         }
         return result;
     }
@@ -232,9 +244,42 @@ public class UserHelper extends HelperBase {
         for (WebElement row : rows) {
             var id = row.findElement(By.tagName("input")).getAttribute("value");
             var addresses = row.findElements(By.tagName("td")).get(3).getText();
-            result.put(id,addresses);
+            result.put(id, addresses);
         }
         return result;
+    }
+
+    public Object getPhonesFromEditForm(UserData user) {
+        returnToHomePage();
+        initUserModification(user);
+        var home = manager.driver.findElement(By.name("home")).getAttribute("value");
+        var mobile = manager.driver.findElement(By.name("mobile")).getAttribute("value");
+        var work = manager.driver.findElement(By.name("work")).getAttribute("value");
+        var phone2 = manager.driver.findElement(By.name("phone2")).getAttribute("value");
+        var phoneResult = Stream.of(home, mobile, work, phone2)
+                .filter(s -> s != null && !"".equals(s))
+                .collect(Collectors.joining("\n"));
+        return phoneResult;
+    }
+
+    public Object getPhonesEmailsAndAddressFromEditForm(UserData user) {
+        returnToHomePage();
+        initUserModification(user);
+        var address = manager.driver.findElement(By.name("address")).getAttribute("value");
+        var email = manager.driver.findElement(By.name("email")).getAttribute("value");
+        var email2 = manager.driver.findElement(By.name("email2")).getAttribute("value");
+        var email3 = manager.driver.findElement(By.name("email3")).getAttribute("value");
+        var emails = Stream.of(email, email2, email3)
+                .filter(s -> s != null && !"".equals(s))
+                .collect(Collectors.joining("\n"));
+        var home = manager.driver.findElement(By.name("home")).getAttribute("value");
+        var mobile = manager.driver.findElement(By.name("mobile")).getAttribute("value");
+        var work = manager.driver.findElement(By.name("work")).getAttribute("value");
+        var phone2 = manager.driver.findElement(By.name("phone2")).getAttribute("value");
+        var phones = Stream.of(home, mobile, work, phone2)
+                .filter(s -> s != null && !"".equals(s))
+                .collect(Collectors.joining("\n"));
+        return address + "\n" + emails + "\n" + phones + "\n";
     }
 }
 

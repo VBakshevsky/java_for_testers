@@ -13,7 +13,7 @@ public class GroupModificationTests extends TestBase {
 
     @Test
     void canModifyGroup() {
-        createRandomGroup();
+        CreateAGroupIfThereIsNone();
         var oldGroups = app.hbm().getGroupList();
         var rnd = new Random();
         var index = rnd.nextInt(oldGroups.size());

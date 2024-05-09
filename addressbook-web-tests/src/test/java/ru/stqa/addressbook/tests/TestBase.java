@@ -22,8 +22,6 @@ public class TestBase {
     protected static ApplicationManager app;
 
 
-
-
     @BeforeEach
     public void setUp() throws IOException {
         if (app == null) {
@@ -103,13 +101,13 @@ public class TestBase {
         result.addAll(value);
     }
 
-    protected static void createRandomUser() {
+    protected static void CreateAUserIfThereIsNone() {
         if (app.hbm().getUserCount() == 0) {
             app.hbm().createUser(new UserData().withMainInformation(CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomMail(), CommonFunctions.randomMail(), "+791711122233", "+791733322211", "+791722233311", CommonFunctions.randomFile("src/test/resources/images"), CommonFunctions.randomMail()));
         }
     }
 
-    protected static void createRandomGroup() {
+    protected static void CreateAGroupIfThereIsNone() {
         if (app.hbm().getGroupCount() == 0) {
             app.hbm().createGroup(new GroupData("", CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10)));
         }

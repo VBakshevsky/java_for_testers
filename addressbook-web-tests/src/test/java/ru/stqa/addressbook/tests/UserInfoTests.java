@@ -3,14 +3,15 @@ package ru.stqa.addressbook.tests;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class UserInfoTests extends TestBase {
-    
+
     @Test
     void testAllElementsOnTheForm() {
-        createRandomUser();
+        CreateAUserIfThereIsNone();
         var users = app.hbm().getUsersList();
         var expectedAddress = users.stream().collect(Collectors.toMap(user -> user.id(), user ->
                 Stream.of(user.address())
@@ -36,4 +37,15 @@ public class UserInfoTests extends TestBase {
         Assertions.assertEquals(expectedPhones, phones);
     }
 
+    @Test
+    void testOneContact() {
+        CreateAUserIfThereIsNone();
+        var users = app.hbm().getUsersList();
+        var rnd = new Random();
+        var index = rnd.nextInt(users.size());
+        var user = users.get(index);
+        var phonesEmailsAndAddressOnHomePage = app.users().getPhonesEmailsAndAddress(user);
+        var phonesEmailsAndAddressInEditForm = app.users().getPhonesEmailsAndAddressFromEditForm(user);
+        Assertions.assertEquals(phonesEmailsAndAddressOnHomePage, phonesEmailsAndAddressInEditForm);
+    }
 }

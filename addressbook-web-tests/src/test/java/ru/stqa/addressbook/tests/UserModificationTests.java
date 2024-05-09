@@ -13,7 +13,7 @@ public class UserModificationTests extends TestBase {
 
     @Test
     void canModifyUser() {
-        createRandomUser();
+        CreateAUserIfThereIsNone();
         var oldUsers = app.hbm().getUsersList();
         var rnd = new Random();
         var index = rnd.nextInt(oldUsers.size());
@@ -32,8 +32,8 @@ public class UserModificationTests extends TestBase {
 
     @Test
     void canAddUserInGroup() {
-        createRandomUser();
-        createRandomGroup();
+        CreateAUserIfThereIsNone();
+        CreateAGroupIfThereIsNone();
         var groups = app.hbm().getGroupList();
         var oldUsers = app.hbm().getUsersList();
         var rnd = new Random();

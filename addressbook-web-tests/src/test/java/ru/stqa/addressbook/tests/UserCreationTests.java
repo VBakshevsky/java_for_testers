@@ -2,7 +2,6 @@ package ru.stqa.addressbook.tests;
 
 import org.junit.jupiter.api.Test;
 import ru.stqa.addressbook.common.CommonFunctions;
-import ru.stqa.addressbook.model.GroupData;
 import ru.stqa.addressbook.model.UserData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -55,7 +54,7 @@ public class UserCreationTests extends TestBase {
 //        };
 //        newUsers.sort(compareById);
 //        var maxId = newUsers.get(newUsers.size() - 1).id();
-        var extraUsers = newUsers.stream().filter(u -> ! oldUsers.contains(u)).toList();
+        var extraUsers = newUsers.stream().filter(u -> !oldUsers.contains(u)).toList();
         var newId = extraUsers.get(0).id();
         var expectedList = new ArrayList<>(oldUsers);
         expectedList.add(user.withId(newId).withPhoto(""));
@@ -67,7 +66,7 @@ public class UserCreationTests extends TestBase {
     @Test
     public void canCreateUsersInGroup() {
         var user = new UserData().withMainInformation(CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomString(10), CommonFunctions.randomMail(), CommonFunctions.randomMail(), CommonFunctions.randomMobileNumber(), CommonFunctions.randomMobileNumber(), CommonFunctions.randomMobileNumber(), CommonFunctions.randomFile("src/test/resources/images"), CommonFunctions.randomMail());
-        createRandomGroup();
+        CreateAGroupIfThereIsNone();
         var group = app.hbm().getGroupList().get(0);
         var oldRelated = app.hbm().getUsersInGroup(group);
         app.users().createUser(user, group);
@@ -77,7 +76,7 @@ public class UserCreationTests extends TestBase {
 //        };
 //        newRelated.sort(compareById);
 //        var maxId = newRelated.get(newRelated.size() - 1).id();
-        var extraUsers = newRelated.stream().filter(u -> ! oldRelated.contains(u)).toList();
+        var extraUsers = newRelated.stream().filter(u -> !oldRelated.contains(u)).toList();
         var newId = extraUsers.get(0).id();
         var expectedList = new ArrayList<>(oldRelated);
         expectedList.add(user.withId(newId).withPhoto(""));

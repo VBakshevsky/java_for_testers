@@ -58,7 +58,7 @@ public class GroupCreationTests extends TestBase {
 //        };
 //        newGroups.sort(compareById);
 //        var maxId = newGroups.get(newGroups.size() - 1).id();
-        var extraGroups = newGroups.stream().filter(g -> ! oldGroups.contains(g)).toList();
+        var extraGroups = newGroups.stream().filter(g -> !oldGroups.contains(g)).toList();
         var newId = extraGroups.get(0).id();
         var expectedList = new ArrayList<>(oldGroups);
         expectedList.add(group.withId(newId));

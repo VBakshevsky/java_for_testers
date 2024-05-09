@@ -1,6 +1,5 @@
 package ru.stqa.addressbook.tests;
 
-import ru.stqa.addressbook.model.GroupData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +10,7 @@ public class GroupRemovalTests extends TestBase {
 
     @Test
     public void canRemoveGroup() {
-        createRandomGroup();
+        CreateAGroupIfThereIsNone();
         var oldGroups = app.hbm().getGroupList();
         var rnd = new Random();
         var index = rnd.nextInt(oldGroups.size());
@@ -24,7 +23,7 @@ public class GroupRemovalTests extends TestBase {
 
     @Test
     void canRemoveAllGroupsAtOnce() {
-        createRandomGroup();
+        CreateAGroupIfThereIsNone();
         app.groups().removeAllGroups();
         Assertions.assertEquals(0, app.hbm().getGroupCount());
     }

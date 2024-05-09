@@ -58,7 +58,7 @@ public class CommonFunctions {
         }
         return "+7" + mobile;
     }
-    
+
     public static String randomFile(String dir) {
         var fileNames = new File(dir).list();
         Random rnd = new Random();
