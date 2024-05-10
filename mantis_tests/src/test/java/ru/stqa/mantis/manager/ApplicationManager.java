@@ -2,7 +2,6 @@ package ru.stqa.mantis.manager;
 
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -14,6 +13,7 @@ public class ApplicationManager {
     private Properties properties;
 
     private SessionHelper sessionHelper;
+    private HttpSessionHelper HttpSessionHelper;
 
     public void init(String browser, Properties properties) {
         this.browser = browser;
@@ -42,5 +42,16 @@ public class ApplicationManager {
             sessionHelper = new SessionHelper(this);
         }
         return sessionHelper;
+    }
+
+    public HttpSessionHelper http() {
+        if (HttpSessionHelper == null) {
+            HttpSessionHelper = new HttpSessionHelper(this);
+        }
+        return HttpSessionHelper;
+    }
+
+    public String property(String name) {
+        return properties.getProperty(name);
     }
 }
