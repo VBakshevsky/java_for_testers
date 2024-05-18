@@ -16,6 +16,7 @@ public class ApplicationManager {
     private HttpSessionHelper HttpSessionHelper;
     private JamesCliHelper JamesCliHelper;
     private MailHelper MailHelper;
+    private JamesApiHelper jamesApiHelper;
 
     public void init(String browser, Properties properties) {
         this.browser = browser;
@@ -58,7 +59,12 @@ public class ApplicationManager {
         }
         return JamesCliHelper;
     }
-
+    public JamesApiHelper jamesApi() {
+        if (jamesApiHelper == null) {
+            jamesApiHelper = new JamesApiHelper(this);
+        }
+        return jamesApiHelper;
+    }
     public MailHelper mail() {
         if (MailHelper == null) {
             MailHelper = new MailHelper(this);

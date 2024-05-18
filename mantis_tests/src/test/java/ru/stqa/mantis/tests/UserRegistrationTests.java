@@ -1,26 +1,29 @@
 package ru.stqa.mantis.tests;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.stqa.mantis.common.CommonFunctions;
+import ru.stqa.mantis.model.DeveloperMailUser;
 
 import java.time.Duration;
 import java.util.regex.Pattern;
 
-public class UserRegistrationTests extends  TestBase{
+public class UserRegistrationTests extends TestBase {
+    DeveloperMailUser user;
 
     @Test
     void canRegisterUser() {
 
-        String username = CommonFunctions.randomString(5);
-        var email = String.format(String.format("%s@localhost", CommonFunctions.randomString(8)));
+        String user = CommonFunctions.randomString(5);
+        var email = String.format("%s@localhost", CommonFunctions.randomString(8));
         app.jamesCli().addUser(email, "password");
         // создать пользователя (адрес) на почтовом сервере (JamesHelper)
 
-        app.session().registrationUser(username,email);
-         //заполняем форму созадния и отправляем (браузер)
+        app.session().registrationUser(user, email);
+        //заполняем форму созадния и отправляем (браузер)
 
-        var messages = app.mail().receive(email,"password", Duration.ofSeconds(60));
+        var messages = app.mail().receive(email, "password", Duration.ofSeconds(60));
         // ждем почту (MailHelper)
 
         var text = messages.get(0).content();
@@ -33,11 +36,80 @@ public class UserRegistrationTests extends  TestBase{
         }
         // извлекаем ссылку из письма
 
-        app.session().finishRegistrationUser(url, username, "password");
+        app.session().finishRegistrationUser(url, user, "password");
         // проходим по ссылке завершаем решистрацию пользователя (браузер)
 
-        app.http().login(username, "password");
+        app.http().login(user, "password");
         Assertions.assertTrue(app.http().isLoggedIn());
         // проверяем, что пользователь может залогиниться (HttpSessionHelper)
     }
+
+    @Test
+    void canRegisterUserWithRestApi() {
+
+        String user = CommonFunctions.randomString(5);
+        var email = String.format(String.format("%s@localhost", CommonFunctions.randomString(8)));
+        app.jamesApi().addUser(email, "password");
+        // создать пользователя (адрес) на почтовом сервере (JamesHelper)
+
+        app.session().registrationUser(user, email);
+        //заполняем форму созадния и отправляем (браузер)
+
+        var messages = app.mail().receive(email, "password", Duration.ofSeconds(60));
+        // ждем почту (MailHelper)
+
+        var text = messages.get(0).content();
+        var pattern = Pattern.compile("http://\\S*");
+        var matcher = pattern.matcher(text);
+        var url = "";
+        if (matcher.find()) {
+            url = text.substring(matcher.start(), matcher.end());
+            System.out.println(url);
+        }
+        // извлекаем ссылку из письма
+
+        app.session().finishRegistrationUser(url, user, "password");
+        // проходим по ссылке завершаем решистрацию пользователя (браузер)
+
+        app.http().login(user, "password");
+        Assertions.assertTrue(app.http().isLoggedIn());
+        // проверяем, что пользователь может залогиниться (HttpSessionHelper)
+    }
+
+    @Test
+    void canRegisterUserDeveloperMail() {
+        var password = "password";
+        user = app.developerMail().addUser();
+        var email = String.format(String.format("%s@developermail.com", user.name()));
+        // создать пользователя (адрес) на почтовом сервере (JamesHelper)
+
+//        app.session().registrationUser(user,email);
+//        //заполняем форму созадния и отправляем (браузер)
+//
+//        var messages = app.mail().receive(email,"password", Duration.ofSeconds(60));
+//        // ждем почту (MailHelper)
+//
+//        var text = messages.get(0).content();
+//        var pattern = Pattern.compile("http://\\S*");
+//        var matcher = pattern.matcher(text);
+//        var url = "";
+//        if (matcher.find()) {
+//            url = text.substring(matcher.start(), matcher.end());
+//            System.out.println(url);
+//        }
+//        // извлекаем ссылку из письма
+//
+//        app.session().finishRegistrationUser(url, user, "password");
+//        // проходим по ссылке завершаем решистрацию пользователя (браузер)
+//
+//        app.http().login(user, "password");
+//        Assertions.assertTrue(app.http().isLoggedIn());
+//        // проверяем, что пользователь может залогиниться (HttpSessionHelper)
+    }
+
+    @AfterEach
+    void deleteMailUser() {
+        app.developerMail().deleteUser(user);
+    }
+
 }
