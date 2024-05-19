@@ -51,6 +51,7 @@ public class UserRegistrationTests extends TestBase {
         var messages = app.mail().receive(email, "password", Duration.ofSeconds(60));
         // ждем почту (MailHelper)
 
+        
         var text = messages.get(0).content();
         var url = CommonFunctions.extractUrl(text);
         // извлекаем ссылку из письма
