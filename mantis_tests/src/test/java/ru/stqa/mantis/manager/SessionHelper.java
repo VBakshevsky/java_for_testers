@@ -1,7 +1,10 @@
 package ru.stqa.mantis.manager;
 
 import org.openqa.selenium.By;
-import ru.stqa.mantis.model.DeveloperMailUser;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class SessionHelper extends HelperBase {
 
@@ -25,6 +28,8 @@ public class SessionHelper extends HelperBase {
         type(By.name("username"), user);
         type(By.name("email"), email);
         click(By.cssSelector("input[type='submit']"));
+        var wait = new WebDriverWait(manager.driver(), Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='login-box']/div/div/div[4]/a")));
         click(By.xpath("//*[@id='login-box']/div/div/div[4]/a"));
     }
 
@@ -34,17 +39,5 @@ public class SessionHelper extends HelperBase {
         type(By.name("password"), password);
         type(By.name("password_confirm"), password);
         click(By.cssSelector("button[type='submit']"));
-
-
-    }
-
-    public void startCreation(String user, String email) {
-        if (!manager.session().isLoggedIn()) {
-            manager.session().login(manager.property("web.username"), manager.property("web.password"));
-        }
-        type(By.name("username"), user);
-        type(By.name("email"), email);
-        click(By.cssSelector("input[type='submit']"));
-        click(By.cssSelector("a[class='width-40 btn btn-inverse bigger-110 btn-success']"));
     }
 }
