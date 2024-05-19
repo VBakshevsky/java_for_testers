@@ -1,6 +1,10 @@
 package ru.stqa.mantis.manager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import java.io.File;
+import java.nio.file.Paths;
 
 public class HelperBase {
     protected final ApplicationManager manager;

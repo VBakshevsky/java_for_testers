@@ -1,10 +1,13 @@
 package ru.stqa.mantis.tests;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.stqa.mantis.common.CommonFunctions;
+import ru.stqa.mantis.model.DeveloperMailUser;
 
 import java.time.Duration;
+import java.util.regex.Pattern;
 
 public class UserRegistrationTests extends TestBase {
 
