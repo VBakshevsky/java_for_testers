@@ -1,6 +1,5 @@
 package ru.stqa.mantis.common;
-import java.io.File;
-import java.nio.file.Paths;
+
 import java.util.Random;
 import java.util.function.Supplier;
 import java.util.regex.Pattern;

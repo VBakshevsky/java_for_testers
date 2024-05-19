@@ -2,12 +2,15 @@ package ru.stqa.mantis.manager;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeUtility;
 import okhttp3.*;
 import ru.stqa.mantis.manager.developermail.AddUserResponse;
 import ru.stqa.mantis.manager.developermail.GetIdsResponse;
 import ru.stqa.mantis.manager.developermail.GetMessageResponse;
 import ru.stqa.mantis.model.DeveloperMailUser;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.CookieManager;
 import java.time.Duration;
@@ -68,9 +71,11 @@ public class DeveloperMailHelper extends  HelperBase {
                     if (!response2.success()) {
                         throw new RuntimeException(response2.errors().toString());
                     }
-                    return response2.result();
+                    return new String(MimeUtility.decode(
+                            new ByteArrayInputStream(response2.result().getBytes()),
+                            "quoted-printable").readAllBytes());
                 }
-            } catch (JsonProcessingException e) {
+            } catch (MessagingException | IOException e) {
                 throw new RuntimeException(e);
             }
             try {
