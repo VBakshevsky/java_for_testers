@@ -9,6 +9,7 @@ public class JamesApiHelper extends HelperBase {
     public static final MediaType JSON = MediaType.get("application/json");
 
     OkHttpClient client;
+
     public JamesApiHelper(ApplicationManager manager) {
         super(manager);
         client = new OkHttpClient.Builder().cookieJar(new JavaNetCookieJar(new CookieManager())).build();

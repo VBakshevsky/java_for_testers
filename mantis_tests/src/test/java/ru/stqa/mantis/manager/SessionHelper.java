@@ -1,7 +1,6 @@
 package ru.stqa.mantis.manager;
 
 import org.openqa.selenium.By;
-import ru.stqa.mantis.model.DeveloperMailUser;
 
 public class SessionHelper extends HelperBase {
 

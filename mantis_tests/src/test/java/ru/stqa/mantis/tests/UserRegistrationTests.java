@@ -1,13 +1,10 @@
 package ru.stqa.mantis.tests;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.stqa.mantis.common.CommonFunctions;
-import ru.stqa.mantis.model.DeveloperMailUser;
 
 import java.time.Duration;
-import java.util.regex.Pattern;
 
 public class UserRegistrationTests extends TestBase {
 
@@ -51,7 +48,7 @@ public class UserRegistrationTests extends TestBase {
         var messages = app.mail().receive(email, "password", Duration.ofSeconds(60));
         // ждем почту (MailHelper)
 
-        
+
         var text = messages.get(0).content();
         var url = CommonFunctions.extractUrl(text);
         // извлекаем ссылку из письма

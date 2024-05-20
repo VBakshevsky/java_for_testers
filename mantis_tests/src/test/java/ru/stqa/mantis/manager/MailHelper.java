@@ -22,7 +22,7 @@ public class MailHelper extends HelperBase {
                 var inbox = getInbox(username, password);
                 inbox.open(Folder.READ_ONLY);
                 var messages = inbox.getMessages();
-                var result =  Arrays.stream(messages)
+                var result = Arrays.stream(messages)
                         .map(m -> {
                             try {
                                 return new MailMessage()
