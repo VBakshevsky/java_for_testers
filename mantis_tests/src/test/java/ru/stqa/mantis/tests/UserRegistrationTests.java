@@ -3,6 +3,7 @@ package ru.stqa.mantis.tests;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.stqa.mantis.common.CommonFunctions;
+import ru.stqa.mantis.model.UserData;
 
 import java.time.Duration;
 
@@ -36,14 +37,15 @@ public class UserRegistrationTests extends TestBase {
 
     @Test
     void canRegisterUserWithRestApi() {
-
         String user = CommonFunctions.randomString(5);
         var email = String.format(String.format("%s@localhost", CommonFunctions.randomString(8)));
         app.jamesApi().addUser(email, "password");
         // создать пользователя (адрес) на почтовом сервере (JamesApi)
 
-        app.session().registrationUser(user, email);
-        //заполняем форму созадния и отправляем (браузер)
+        app.rest().registrationUser(new UserData()
+                .withUsername(user)
+                .withEmail(email));
+        //заполняем форму созадния и отправляем (restApi)
 
         var messages = app.mail().receive(email, "password", Duration.ofSeconds(60));
         // ждем почту (MailHelper)

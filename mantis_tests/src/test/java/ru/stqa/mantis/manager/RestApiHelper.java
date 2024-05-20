@@ -8,6 +8,10 @@ import io.swagger.client.auth.ApiKeyAuth;
 import io.swagger.client.model.Identifier;
 import io.swagger.client.model.Issue;
 import ru.stqa.mantis.model.IssueData;
+import ru.stqa.mantis.model.UserData;
+import io.swagger.client.model.User;
+import io.swagger.client.model.UserAddResponse;
+import io.swagger.client.api.UserApi;
 
 public class RestApiHelper extends  HelperBase{
     public RestApiHelper(ApplicationManager manager) {
@@ -33,7 +37,22 @@ public class RestApiHelper extends  HelperBase{
         try {
             apiInstance.issueAdd(issue);
         } catch (ApiException e) {
-            new RuntimeException(e);
+            throw new RuntimeException(e);
         }
     }
+
+    public void registrationUser(UserData userData) {
+        User user = new User(); // User | The user to add.
+        user.setUsername(userData.username());
+        user.setEmail(userData.email());
+
+        UserApi apiInstance = new UserApi();
+        try {
+            UserAddResponse result = apiInstance.userAdd(user);
+            System.out.println(result);
+        } catch (ApiException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
