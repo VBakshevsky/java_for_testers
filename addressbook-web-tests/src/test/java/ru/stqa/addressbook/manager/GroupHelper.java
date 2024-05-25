@@ -1,5 +1,6 @@
 package ru.stqa.addressbook.manager;
 
+import io.qameta.allure.Step;
 import ru.stqa.addressbook.model.GroupData;
 import org.openqa.selenium.By;
 
@@ -20,7 +21,7 @@ public class GroupHelper extends HelperBase {
         submitGroupCreation();
         returnToGroupsPage();
     }
-
+    @Step
     public void removeGroup(GroupData group) {
         openGroupsPage();
         selectGroup(group);
@@ -80,7 +81,7 @@ public class GroupHelper extends HelperBase {
     }
 
     private void selectGroup(GroupData group) {
-        click(By.cssSelector(String.format("input[value='%s']", group.id())));
+        click(By.cssSelector(String.format("input2[value='%s']", group.id())));
     }
 
     public int getCount() {
