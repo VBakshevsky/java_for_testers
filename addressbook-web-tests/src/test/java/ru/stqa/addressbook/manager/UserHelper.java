@@ -1,12 +1,12 @@
 package ru.stqa.addressbook.manager;
 
+import io.qameta.allure.Step;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import ru.stqa.addressbook.model.GroupData;
 import ru.stqa.addressbook.model.UserData;
-import org.openqa.selenium.By;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +19,7 @@ public class UserHelper extends HelperBase {
         super(manager);
     }
 
+    @Step
     public void createUser(UserData user) {
         initUserCreation();
         fillUserForm(user);
@@ -26,6 +27,7 @@ public class UserHelper extends HelperBase {
         returnToHomePage();
     }
 
+    @Step
     public void createUser(UserData user, GroupData group) {
         initUserCreation();
         fillUserForm(user);
@@ -34,6 +36,7 @@ public class UserHelper extends HelperBase {
         returnToHomePage();
     }
 
+    @Step
     public void addUserToGroup(UserData user, GroupData group) {
         returnToHomePage();
         selectGroupFromAdd(group);
@@ -42,6 +45,7 @@ public class UserHelper extends HelperBase {
         returnToHomePage();
     }
 
+    @Step
     public void removeUser(UserData user) {
         returnToHomePage();
         selectUser(user);
@@ -49,6 +53,7 @@ public class UserHelper extends HelperBase {
         returnToHomePage();
     }
 
+    @Step
     public void modifyUser(UserData user, UserData modifiedUser) {
         returnToHomePage();
         initUserModification(user);
@@ -57,12 +62,14 @@ public class UserHelper extends HelperBase {
         returnToHomePage();
     }
 
+    @Step
     public void removeAllUsers() {
         returnToHomePage();
         selectAllUsers();
         removeSelectedUsers();
     }
 
+    @Step
     public void removeUserFromGroup(UserData user, GroupData group) {
         returnToHomePage();
         selectGroupFilter(group);
@@ -151,6 +158,7 @@ public class UserHelper extends HelperBase {
     }
 
     public List<UserData> getListUsers() {
+        returnToHomePage();
         var trs = manager.driver.findElements(By.cssSelector("tr[name=\"entry\"]"));
         return trs.stream()
                 .map(tr -> {

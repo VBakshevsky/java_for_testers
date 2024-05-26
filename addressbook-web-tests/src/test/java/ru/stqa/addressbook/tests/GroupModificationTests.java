@@ -1,9 +1,9 @@
 package ru.stqa.addressbook.tests;
 
-import ru.stqa.addressbook.common.CommonFunctions;
-import ru.stqa.addressbook.model.GroupData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import ru.stqa.addressbook.common.CommonFunctions;
+import ru.stqa.addressbook.model.GroupData;
 
 import java.util.ArrayList;
 import java.util.Random;

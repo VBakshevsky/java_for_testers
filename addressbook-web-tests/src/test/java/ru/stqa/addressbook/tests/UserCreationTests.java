@@ -1,11 +1,11 @@
 package ru.stqa.addressbook.tests;
 
-import org.junit.jupiter.api.Test;
-import ru.stqa.addressbook.common.CommonFunctions;
-import ru.stqa.addressbook.model.UserData;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+import ru.stqa.addressbook.common.CommonFunctions;
+import ru.stqa.addressbook.model.UserData;
 
 import java.io.IOException;
 import java.util.ArrayList;

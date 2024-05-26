@@ -1,1 +1,188 @@
-{"uid":"70e69b73104071ad","name":"canRemoveAllGroupsAtOnce()","fullName":"ru.stqa.addressbook.tests.GroupRemovalTests.canRemoveAllGroupsAtOnce","historyId":"e6801cd955c6b25b6f73ac27e8288099","time":{"start":1716632959751,"stop":1716632960273,"duration":522},"description":"","status":"passed","flaky":false,"newFailed":false,"newBroken":false,"newPassed":false,"retriesCount":7,"retriesStatusChange":true,"beforeStages":[],"afterStages":[],"labels":[{"name":"junit.platform.uniqueid","value":"[engine:junit-jupiter]/[class:ru.stqa.addressbook.tests.GroupRemovalTests]/[method:canRemoveAllGroupsAtOnce()]"},{"name":"host","value":"DESKTOP-DUAUSV2"},{"name":"thread","value":"27208@DESKTOP-DUAUSV2.Test worker(1)"},{"name":"framework","value":"junit-platform"},{"name":"language","value":"java"},{"name":"package","value":"ru.stqa.addressbook.tests.GroupRemovalTests"},{"name":"testClass","value":"ru.stqa.addressbook.tests.GroupRemovalTests"},{"name":"testMethod","value":"canRemoveAllGroupsAtOnce"},{"name":"suite","value":"ru.stqa.addressbook.tests.GroupRemovalTests"},{"name":"resultFormat","value":"allure2"}],"parameters":[],"links":[],"hidden":false,"retry":false,"extra":{"severity":"normal","retries":[{"uid":"43567b2ce1e0a90b","status":"passed","time":{"start":1716632905340,"stop":1716632905861,"duration":521}},{"uid":"2f78eed6336e797e","status":"passed","time":{"start":1716632851880,"stop":1716632852401,"duration":521}},{"uid":"4b761a11575c77e5","status":"passed","time":{"start":1716632355204,"stop":1716632355733,"duration":529}},{"uid":"846468c69d7c492d","status":"passed","time":{"start":1716631945590,"stop":1716631946086,"duration":496}},{"uid":"3183eba36bc35b2b","status":"broken","statusDetails":"Tried to run command without establishing a connection\nBuild info: version: '4.19.1', revision: 'abe0ee07dc'\nSystem info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.2'\nDriver info: org.openqa.selenium.firefox.FirefoxDriver\nCommand: [ddbf15d0-4970-471a-8aad-0cfbf47b4b27, findElement {using=name, value=new}]\nCapabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 126.0, moz:accessibilityChecks: false, moz:buildID: 20240509170740, moz:debuggerAddress: 127.0.0.1:13376, moz:geckodriverVersion: 0.34.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 25852, moz:profile: C:\\Users\\Vadim\\AppData\\Loca..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://127.0.0.1:13376/devtoo..., se:cdpVersion: 85.0, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}\nSession ID: ddbf15d0-4970-471a-8aad-0cfbf47b4b27","time":{"start":1716631860958,"stop":1716631860968,"duration":10}},{"uid":"a4bb18b93ac01de8","status":"passed","time":{"start":1716631523939,"stop":1716631524442,"duration":503}},{"uid":"c298388dadf3fbc3","status":"passed","time":{"start":1716630420985,"stop":1716630423886,"duration":2901}}],"categories":[],"history":{"statistic":{"failed":0,"broken":0,"skipped":0,"passed":5,"unknown":0,"total":5},"items":[{"uid":"a6c9b7d3e70ffca7","status":"passed","time":{"start":1716632355204,"stop":1716632355733,"duration":529}},{"uid":"78222d51a36d9393","status":"passed","time":{"start":1716631945590,"stop":1716631946086,"duration":496}},{"uid":"5e605d95d5d4170b","status":"passed","time":{"start":1716631523939,"stop":1716631524442,"duration":503}},{"uid":"8d7d7eaea40b4c78","status":"passed","time":{"start":1716630420985,"stop":1716630423886,"duration":2901}}]},"tags":[]},"source":"70e69b73104071ad.json","parameterValues":[]}
+{
+  "uid": "70e69b73104071ad",
+  "name": "canRemoveAllGroupsAtOnce()",
+  "fullName": "ru.stqa.addressbook.tests.GroupRemovalTests.canRemoveAllGroupsAtOnce",
+  "historyId": "e6801cd955c6b25b6f73ac27e8288099",
+  "time": {
+    "start": 1716632959751,
+    "stop": 1716632960273,
+    "duration": 522
+  },
+  "description": "",
+  "status": "passed",
+  "flaky": false,
+  "newFailed": false,
+  "newBroken": false,
+  "newPassed": false,
+  "retriesCount": 7,
+  "retriesStatusChange": true,
+  "beforeStages": [],
+  "afterStages": [],
+  "labels": [
+    {
+      "name": "junit.platform.uniqueid",
+      "value": "[engine:junit-jupiter]/[class:ru.stqa.addressbook.tests.GroupRemovalTests]/[method:canRemoveAllGroupsAtOnce()]"
+    },
+    {
+      "name": "host",
+      "value": "DESKTOP-DUAUSV2"
+    },
+    {
+      "name": "thread",
+      "value": "27208@DESKTOP-DUAUSV2.Test worker(1)"
+    },
+    {
+      "name": "framework",
+      "value": "junit-platform"
+    },
+    {
+      "name": "language",
+      "value": "java"
+    },
+    {
+      "name": "package",
+      "value": "ru.stqa.addressbook.tests.GroupRemovalTests"
+    },
+    {
+      "name": "testClass",
+      "value": "ru.stqa.addressbook.tests.GroupRemovalTests"
+    },
+    {
+      "name": "testMethod",
+      "value": "canRemoveAllGroupsAtOnce"
+    },
+    {
+      "name": "suite",
+      "value": "ru.stqa.addressbook.tests.GroupRemovalTests"
+    },
+    {
+      "name": "resultFormat",
+      "value": "allure2"
+    }
+  ],
+  "parameters": [],
+  "links": [],
+  "hidden": false,
+  "retry": false,
+  "extra": {
+    "severity": "normal",
+    "retries": [
+      {
+        "uid": "43567b2ce1e0a90b",
+        "status": "passed",
+        "time": {
+          "start": 1716632905340,
+          "stop": 1716632905861,
+          "duration": 521
+        }
+      },
+      {
+        "uid": "2f78eed6336e797e",
+        "status": "passed",
+        "time": {
+          "start": 1716632851880,
+          "stop": 1716632852401,
+          "duration": 521
+        }
+      },
+      {
+        "uid": "4b761a11575c77e5",
+        "status": "passed",
+        "time": {
+          "start": 1716632355204,
+          "stop": 1716632355733,
+          "duration": 529
+        }
+      },
+      {
+        "uid": "846468c69d7c492d",
+        "status": "passed",
+        "time": {
+          "start": 1716631945590,
+          "stop": 1716631946086,
+          "duration": 496
+        }
+      },
+      {
+        "uid": "3183eba36bc35b2b",
+        "status": "broken",
+        "statusDetails": "Tried to run command without establishing a connection\nBuild info: version: '4.19.1', revision: 'abe0ee07dc'\nSystem info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.2'\nDriver info: org.openqa.selenium.firefox.FirefoxDriver\nCommand: [ddbf15d0-4970-471a-8aad-0cfbf47b4b27, findElement {using=name, value=new}]\nCapabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 126.0, moz:accessibilityChecks: false, moz:buildID: 20240509170740, moz:debuggerAddress: 127.0.0.1:13376, moz:geckodriverVersion: 0.34.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 25852, moz:profile: C:\\Users\\Vadim\\AppData\\Loca..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://127.0.0.1:13376/devtoo..., se:cdpVersion: 85.0, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}\nSession ID: ddbf15d0-4970-471a-8aad-0cfbf47b4b27",
+        "time": {
+          "start": 1716631860958,
+          "stop": 1716631860968,
+          "duration": 10
+        }
+      },
+      {
+        "uid": "a4bb18b93ac01de8",
+        "status": "passed",
+        "time": {
+          "start": 1716631523939,
+          "stop": 1716631524442,
+          "duration": 503
+        }
+      },
+      {
+        "uid": "c298388dadf3fbc3",
+        "status": "passed",
+        "time": {
+          "start": 1716630420985,
+          "stop": 1716630423886,
+          "duration": 2901
+        }
+      }
+    ],
+    "categories": [],
+    "history": {
+      "statistic": {
+        "failed": 0,
+        "broken": 0,
+        "skipped": 0,
+        "passed": 5,
+        "unknown": 0,
+        "total": 5
+      },
+      "items": [
+        {
+          "uid": "a6c9b7d3e70ffca7",
+          "status": "passed",
+          "time": {
+            "start": 1716632355204,
+            "stop": 1716632355733,
+            "duration": 529
+          }
+        },
+        {
+          "uid": "78222d51a36d9393",
+          "status": "passed",
+          "time": {
+            "start": 1716631945590,
+            "stop": 1716631946086,
+            "duration": 496
+          }
+        },
+        {
+          "uid": "5e605d95d5d4170b",
+          "status": "passed",
+          "time": {
+            "start": 1716631523939,
+            "stop": 1716631524442,
+            "duration": 503
+          }
+        },
+        {
+          "uid": "8d7d7eaea40b4c78",
+          "status": "passed",
+          "time": {
+            "start": 1716630420985,
+            "stop": 1716630423886,
+            "duration": 2901
+          }
+        }
+      ]
+    },
+    "tags": []
+  },
+  "source": "70e69b73104071ad.json",
+  "parameterValues": []
+}

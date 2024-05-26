@@ -1,17 +1,16 @@
 package ru.stqa.addressbook.tests;
 
-import ru.stqa.addressbook.common.CommonFunctions;
-import ru.stqa.addressbook.model.GroupData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+import ru.stqa.addressbook.common.CommonFunctions;
+import ru.stqa.addressbook.model.GroupData;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class GroupCreationTests extends TestBase {

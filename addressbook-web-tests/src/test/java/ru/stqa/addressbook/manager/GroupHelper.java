@@ -1,10 +1,9 @@
 package ru.stqa.addressbook.manager;
 
 import io.qameta.allure.Step;
-import ru.stqa.addressbook.model.GroupData;
 import org.openqa.selenium.By;
+import ru.stqa.addressbook.model.GroupData;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,6 +13,7 @@ public class GroupHelper extends HelperBase {
         super(manager);
     }
 
+    @Step
     public void createGroup(GroupData group) {
         openGroupsPage();
         initGroupCreation();
@@ -21,6 +21,7 @@ public class GroupHelper extends HelperBase {
         submitGroupCreation();
         returnToGroupsPage();
     }
+
     @Step
     public void removeGroup(GroupData group) {
         openGroupsPage();
@@ -29,6 +30,7 @@ public class GroupHelper extends HelperBase {
         returnToGroupsPage();
     }
 
+    @Step
     public void modifyGroup(GroupData user, GroupData modifiedGroup) {
         openGroupsPage();
         selectGroup(user);
@@ -38,6 +40,7 @@ public class GroupHelper extends HelperBase {
         returnToGroupsPage();
     }
 
+    @Step
     public void openGroupsPage() {
         if (!manager.isElementPresent(By.name("new"))) {
             click(By.linkText("groups"));
@@ -89,6 +92,7 @@ public class GroupHelper extends HelperBase {
         return manager.driver.findElements(By.name("selected[]")).size();
     }
 
+    @Step
     public void removeAllGroups() {
         openGroupsPage();
         selectAllElements();

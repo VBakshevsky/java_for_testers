@@ -4,13 +4,16 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import ru.stqa.addressbook.common.CommonFunctions;
 import ru.stqa.addressbook.manager.ApplicationManager;
-import org.junit.jupiter.api.BeforeEach;
 import ru.stqa.addressbook.model.GroupData;
 import ru.stqa.addressbook.model.UserData;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;

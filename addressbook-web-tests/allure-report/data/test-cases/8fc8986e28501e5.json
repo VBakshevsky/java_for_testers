@@ -1,1 +1,73 @@
-{"uid":"8fc8986e28501e5","name":"testOneContact()","fullName":"ru.stqa.addressbook.tests.UserInfoTests.testOneContact","historyId":"81f009f08943190c77ab8d1a45646e3","time":{"start":1716632372721,"stop":1716632373122,"duration":401},"description":"","status":"passed","flaky":false,"newFailed":false,"newBroken":false,"newPassed":false,"retriesCount":0,"retriesStatusChange":false,"beforeStages":[],"afterStages":[],"labels":[{"name":"junit.platform.uniqueid","value":"[engine:junit-jupiter]/[class:ru.stqa.addressbook.tests.UserInfoTests]/[method:testOneContact()]"},{"name":"host","value":"DESKTOP-DUAUSV2"},{"name":"thread","value":"8140@DESKTOP-DUAUSV2.Test worker(1)"},{"name":"framework","value":"junit-platform"},{"name":"language","value":"java"},{"name":"package","value":"ru.stqa.addressbook.tests.UserInfoTests"},{"name":"testClass","value":"ru.stqa.addressbook.tests.UserInfoTests"},{"name":"testMethod","value":"testOneContact"},{"name":"suite","value":"ru.stqa.addressbook.tests.UserInfoTests"},{"name":"resultFormat","value":"allure2"}],"parameters":[],"links":[],"hidden":true,"retry":true,"extra":{"categories":[],"tags":[]},"source":"8fc8986e28501e5.json","parameterValues":[]}
+{
+  "uid": "8fc8986e28501e5",
+  "name": "testOneContact()",
+  "fullName": "ru.stqa.addressbook.tests.UserInfoTests.testOneContact",
+  "historyId": "81f009f08943190c77ab8d1a45646e3",
+  "time": {
+    "start": 1716632372721,
+    "stop": 1716632373122,
+    "duration": 401
+  },
+  "description": "",
+  "status": "passed",
+  "flaky": false,
+  "newFailed": false,
+  "newBroken": false,
+  "newPassed": false,
+  "retriesCount": 0,
+  "retriesStatusChange": false,
+  "beforeStages": [],
+  "afterStages": [],
+  "labels": [
+    {
+      "name": "junit.platform.uniqueid",
+      "value": "[engine:junit-jupiter]/[class:ru.stqa.addressbook.tests.UserInfoTests]/[method:testOneContact()]"
+    },
+    {
+      "name": "host",
+      "value": "DESKTOP-DUAUSV2"
+    },
+    {
+      "name": "thread",
+      "value": "8140@DESKTOP-DUAUSV2.Test worker(1)"
+    },
+    {
+      "name": "framework",
+      "value": "junit-platform"
+    },
+    {
+      "name": "language",
+      "value": "java"
+    },
+    {
+      "name": "package",
+      "value": "ru.stqa.addressbook.tests.UserInfoTests"
+    },
+    {
+      "name": "testClass",
+      "value": "ru.stqa.addressbook.tests.UserInfoTests"
+    },
+    {
+      "name": "testMethod",
+      "value": "testOneContact"
+    },
+    {
+      "name": "suite",
+      "value": "ru.stqa.addressbook.tests.UserInfoTests"
+    },
+    {
+      "name": "resultFormat",
+      "value": "allure2"
+    }
+  ],
+  "parameters": [],
+  "links": [],
+  "hidden": true,
+  "retry": true,
+  "extra": {
+    "categories": [],
+    "tags": []
+  },
+  "source": "8fc8986e28501e5.json",
+  "parameterValues": []
+}

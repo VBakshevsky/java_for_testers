@@ -1,1 +1,73 @@
-{"uid":"b5cc6613fbb4972d","name":"testAllElementsOnTheForm()","fullName":"ru.stqa.addressbook.tests.UserInfoTests.testAllElementsOnTheForm","historyId":"bed2daf726834707b6e89bbda976e4ae","time":{"start":1716630440002,"stop":1716630440610,"duration":608},"description":"","status":"passed","flaky":false,"newFailed":false,"newBroken":false,"newPassed":false,"retriesCount":0,"retriesStatusChange":false,"beforeStages":[],"afterStages":[],"labels":[{"name":"junit.platform.uniqueid","value":"[engine:junit-jupiter]/[class:ru.stqa.addressbook.tests.UserInfoTests]/[method:testAllElementsOnTheForm()]"},{"name":"host","value":"DESKTOP-DUAUSV2"},{"name":"thread","value":"2492@DESKTOP-DUAUSV2.Test worker(1)"},{"name":"framework","value":"junit-platform"},{"name":"language","value":"java"},{"name":"package","value":"ru.stqa.addressbook.tests.UserInfoTests"},{"name":"testClass","value":"ru.stqa.addressbook.tests.UserInfoTests"},{"name":"testMethod","value":"testAllElementsOnTheForm"},{"name":"suite","value":"ru.stqa.addressbook.tests.UserInfoTests"},{"name":"resultFormat","value":"allure2"}],"parameters":[],"links":[],"hidden":true,"retry":true,"extra":{"categories":[],"tags":[]},"source":"b5cc6613fbb4972d.json","parameterValues":[]}
+{
+  "uid": "b5cc6613fbb4972d",
+  "name": "testAllElementsOnTheForm()",
+  "fullName": "ru.stqa.addressbook.tests.UserInfoTests.testAllElementsOnTheForm",
+  "historyId": "bed2daf726834707b6e89bbda976e4ae",
+  "time": {
+    "start": 1716630440002,
+    "stop": 1716630440610,
+    "duration": 608
+  },
+  "description": "",
+  "status": "passed",
+  "flaky": false,
+  "newFailed": false,
+  "newBroken": false,
+  "newPassed": false,
+  "retriesCount": 0,
+  "retriesStatusChange": false,
+  "beforeStages": [],
+  "afterStages": [],
+  "labels": [
+    {
+      "name": "junit.platform.uniqueid",
+      "value": "[engine:junit-jupiter]/[class:ru.stqa.addressbook.tests.UserInfoTests]/[method:testAllElementsOnTheForm()]"
+    },
+    {
+      "name": "host",
+      "value": "DESKTOP-DUAUSV2"
+    },
+    {
+      "name": "thread",
+      "value": "2492@DESKTOP-DUAUSV2.Test worker(1)"
+    },
+    {
+      "name": "framework",
+      "value": "junit-platform"
+    },
+    {
+      "name": "language",
+      "value": "java"
+    },
+    {
+      "name": "package",
+      "value": "ru.stqa.addressbook.tests.UserInfoTests"
+    },
+    {
+      "name": "testClass",
+      "value": "ru.stqa.addressbook.tests.UserInfoTests"
+    },
+    {
+      "name": "testMethod",
+      "value": "testAllElementsOnTheForm"
+    },
+    {
+      "name": "suite",
+      "value": "ru.stqa.addressbook.tests.UserInfoTests"
+    },
+    {
+      "name": "resultFormat",
+      "value": "allure2"
+    }
+  ],
+  "parameters": [],
+  "links": [],
+  "hidden": true,
+  "retry": true,
+  "extra": {
+    "categories": [],
+    "tags": []
+  },
+  "source": "b5cc6613fbb4972d.json",
+  "parameterValues": []
+}

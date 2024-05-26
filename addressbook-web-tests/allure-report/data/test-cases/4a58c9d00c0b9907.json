@@ -1,1 +1,243 @@
-{"uid":"4a58c9d00c0b9907","name":"canNotCreateUser(UserData) [1] UserData[id=, firstname=first name', middlename=, lastname=, nickname=, title=, company=, address=, home=, mobile=, work=, fax=, email=, email2=, email3=, homepage=, bday=0, bmonth=-, byear=, aday=0, amonth=-, ayear=, photo=]","fullName":"ru.stqa.addressbook.tests.UserCreationTests.canNotCreateUser","historyId":"57b91d2325a5118610acc453cb101abf","time":{"start":1716632934151,"stop":1716632943090,"duration":8939},"description":"","status":"passed","flaky":false,"newFailed":false,"newBroken":false,"newPassed":true,"retriesCount":12,"retriesStatusChange":true,"beforeStages":[],"afterStages":[],"labels":[{"name":"junit.platform.uniqueid","value":"[engine:junit-jupiter]/[class:ru.stqa.addressbook.tests.UserCreationTests]/[test-template:canNotCreateUser(ru.stqa.addressbook.model.UserData)]/[test-template-invocation:#1]"},{"name":"host","value":"DESKTOP-DUAUSV2"},{"name":"thread","value":"27208@DESKTOP-DUAUSV2.Test worker(1)"},{"name":"framework","value":"junit-platform"},{"name":"language","value":"java"},{"name":"package","value":"ru.stqa.addressbook.tests.UserCreationTests"},{"name":"testClass","value":"ru.stqa.addressbook.tests.UserCreationTests"},{"name":"testMethod","value":"canNotCreateUser"},{"name":"suite","value":"ru.stqa.addressbook.tests.UserCreationTests"},{"name":"resultFormat","value":"allure2"}],"parameters":[],"links":[],"hidden":false,"retry":false,"extra":{"severity":"normal","retries":[{"uid":"5fb72fbea09443ff","status":"failed","statusDetails":"expected: <[UserData[id=1064, firstname=xfhwtwffek, middlename=, lastname=aorudntgii, nickname=, title=, company=, address=, home=, mobile=, work=, fax=, email=, email2=, email3=, homepage=, bday=0, bmonth=-, byear=, aday=0, amonth=-, ayear=, photo=]]> but was: <[]>","time":{"start":1716632906387,"stop":1716632911630,"duration":5243}},{"uid":"3239a909ebd18652","status":"failed","statusDetails":"expected: <[UserData[id=1060, firstname=tnvbznnzzp, middlename=, lastname=denibjzrhl, nickname=, title=, company=, address=, home=, mobile=, work=, fax=, email=, email2=, email3=, homepage=, bday=0, bmonth=-, byear=, aday=0, amonth=-, ayear=, photo=]]> but was: <[]>","time":{"start":1716632852938,"stop":1716632858189,"duration":5251}},{"uid":"788a96f6db4a9d21","status":"passed","time":{"start":1716632779804,"stop":1716632788537,"duration":8733}},{"uid":"1a5b11651ba5a705","status":"passed","time":{"start":1716632470234,"stop":1716632479021,"duration":8787}},{"uid":"99a4a47da163a911","status":"failed","statusDetails":"expected: <[UserData[id=1056, firstname=ljnijcogxz, middlename=, lastname=vkddvrzygb, nickname=, title=, company=, address=, home=, mobile=, work=, fax=, email=, email2=, email3=, homepage=, bday=0, bmonth=-, byear=, aday=0, amonth=-, ayear=, photo=]]> but was: <[]>","time":{"start":1716632356253,"stop":1716632361586,"duration":5333}},{"uid":"613cc1cab17e6df2","status":"passed","time":{"start":1716632133887,"stop":1716632142666,"duration":8779}},{"uid":"fbafbc51ad75b9b2","status":"failed","statusDetails":"expected: <[UserData[id=1052, firstname=hbpqlaajnc, middlename=, lastname=nknqvgxttu, nickname=, title=, company=, address=, home=, mobile=, work=, fax=, email=, email2=, email3=, homepage=, bday=0, bmonth=-, byear=, aday=0, amonth=-, ayear=, photo=]]> but was: <[]>","time":{"start":1716631946610,"stop":1716631951789,"duration":5179}},{"uid":"1ea266b8cb5bd367","status":"broken","statusDetails":"Tried to run command without establishing a connection\nBuild info: version: '4.19.1', revision: 'abe0ee07dc'\nSystem info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.2'\nDriver info: org.openqa.selenium.firefox.FirefoxDriver\nCommand: [ddbf15d0-4970-471a-8aad-0cfbf47b4b27, findElements {using=css selector, value=tr[name=\"entry\"]}]\nCapabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 126.0, moz:accessibilityChecks: false, moz:buildID: 20240509170740, moz:debuggerAddress: 127.0.0.1:13376, moz:geckodriverVersion: 0.34.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 25852, moz:profile: C:\\Users\\Vadim\\AppData\\Loca..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://127.0.0.1:13376/devtoo..., se:cdpVersion: 85.0, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}\nSession ID: ddbf15d0-4970-471a-8aad-0cfbf47b4b27","time":{"start":1716631861009,"stop":1716631861016,"duration":7}},{"uid":"fa405e57cf424b7d","status":"failed","statusDetails":"expected: <[UserData[id=1048, firstname=ftxtikwqjt, middlename=, lastname=mnrqbrtfub, nickname=, title=, company=, address=, home=, mobile=, work=, fax=, email=, email2=, email3=, homepage=, bday=0, bmonth=-, byear=, aday=0, amonth=-, ayear=, photo=]]> but was: <[]>","time":{"start":1716631524962,"stop":1716631530170,"duration":5208}},{"uid":"4f607df3802d367e","status":"passed","time":{"start":1716630545346,"stop":1716630554216,"duration":8870}},{"uid":"2e237913993bf1bd","status":"broken","statusDetails":"DB is corrupted","time":{"start":1716630480486,"stop":1716630489425,"duration":8939}},{"uid":"4340549c92125efa","status":"failed","statusDetails":"expected: <[UserData[id=1043, firstname=mttjzigwrj, middlename=, lastname=bhvkytawbu, nickname=, title=, company=, address=, home=, mobile=, work=, fax=, email=, email2=, email3=, homepage=, bday=0, bmonth=-, byear=, aday=0, amonth=-, ayear=, photo=], UserData[id=1039, firstname=pnxwzpavzz, middlename=, lastname=evoandasxy, nickname=, title=, company=, address=, home=, mobile=, work=, fax=, email=, email2=, email3=, homepage=, bday=0, bmonth=-, byear=, aday=0, amonth=-, ayear=, photo=], UserData[id=1044, firstname=ajdcpeuyzx, middlename=, lastname=qefipejgnz, nickname=, title=, company=, address=, home=, mobile=, work=, fax=, email=, email2=, email3=, homepage=, bday=0, bmonth=-, byear=, aday=0, amonth=-, ayear=, photo=]]> but was: <[]>","time":{"start":1716630424469,"stop":1716630429613,"duration":5144}}],"categories":[],"history":{"statistic":{"failed":3,"broken":0,"skipped":0,"passed":2,"unknown":0,"total":5},"items":[{"uid":"16c84b9ac4c94df6","status":"failed","statusDetails":"expected: <[UserData[id=1056, firstname=ljnijcogxz, middlename=, lastname=vkddvrzygb, nickname=, title=, company=, address=, home=, mobile=, work=, fax=, email=, email2=, email3=, homepage=, bday=0, bmonth=-, byear=, aday=0, amonth=-, ayear=, photo=]]> but was: <[]>","time":{"start":1716632356253,"stop":1716632361586,"duration":5333}},{"uid":"ddbe271bf23ed2f2","status":"failed","statusDetails":"expected: <[UserData[id=1052, firstname=hbpqlaajnc, middlename=, lastname=nknqvgxttu, nickname=, title=, company=, address=, home=, mobile=, work=, fax=, email=, email2=, email3=, homepage=, bday=0, bmonth=-, byear=, aday=0, amonth=-, ayear=, photo=]]> but was: <[]>","time":{"start":1716631946610,"stop":1716631951789,"duration":5179}},{"uid":"61787342dd08bb67","status":"failed","statusDetails":"expected: <[UserData[id=1048, firstname=ftxtikwqjt, middlename=, lastname=mnrqbrtfub, nickname=, title=, company=, address=, home=, mobile=, work=, fax=, email=, email2=, email3=, homepage=, bday=0, bmonth=-, byear=, aday=0, amonth=-, ayear=, photo=]]> but was: <[]>","time":{"start":1716631524962,"stop":1716631530170,"duration":5208}},{"uid":"f8d3cac40bda2007","status":"passed","time":{"start":1716630545346,"stop":1716630554216,"duration":8870}}]},"tags":[]},"source":"4a58c9d00c0b9907.json","parameterValues":[]}
+{
+  "uid": "4a58c9d00c0b9907",
+  "name": "canNotCreateUser(UserData) [1] UserData[id=, firstname=first name', middlename=, lastname=, nickname=, title=, company=, address=, home=, mobile=, work=, fax=, email=, email2=, email3=, homepage=, bday=0, bmonth=-, byear=, aday=0, amonth=-, ayear=, photo=]",
+  "fullName": "ru.stqa.addressbook.tests.UserCreationTests.canNotCreateUser",
+  "historyId": "57b91d2325a5118610acc453cb101abf",
+  "time": {
+    "start": 1716632934151,
+    "stop": 1716632943090,
+    "duration": 8939
+  },
+  "description": "",
+  "status": "passed",
+  "flaky": false,
+  "newFailed": false,
+  "newBroken": false,
+  "newPassed": true,
+  "retriesCount": 12,
+  "retriesStatusChange": true,
+  "beforeStages": [],
+  "afterStages": [],
+  "labels": [
+    {
+      "name": "junit.platform.uniqueid",
+      "value": "[engine:junit-jupiter]/[class:ru.stqa.addressbook.tests.UserCreationTests]/[test-template:canNotCreateUser(ru.stqa.addressbook.model.UserData)]/[test-template-invocation:#1]"
+    },
+    {
+      "name": "host",
+      "value": "DESKTOP-DUAUSV2"
+    },
+    {
+      "name": "thread",
+      "value": "27208@DESKTOP-DUAUSV2.Test worker(1)"
+    },
+    {
+      "name": "framework",
+      "value": "junit-platform"
+    },
+    {
+      "name": "language",
+      "value": "java"
+    },
+    {
+      "name": "package",
+      "value": "ru.stqa.addressbook.tests.UserCreationTests"
+    },
+    {
+      "name": "testClass",
+      "value": "ru.stqa.addressbook.tests.UserCreationTests"
+    },
+    {
+      "name": "testMethod",
+      "value": "canNotCreateUser"
+    },
+    {
+      "name": "suite",
+      "value": "ru.stqa.addressbook.tests.UserCreationTests"
+    },
+    {
+      "name": "resultFormat",
+      "value": "allure2"
+    }
+  ],
+  "parameters": [],
+  "links": [],
+  "hidden": false,
+  "retry": false,
+  "extra": {
+    "severity": "normal",
+    "retries": [
+      {
+        "uid": "5fb72fbea09443ff",
+        "status": "failed",
+        "statusDetails": "expected: <[UserData[id=1064, firstname=xfhwtwffek, middlename=, lastname=aorudntgii, nickname=, title=, company=, address=, home=, mobile=, work=, fax=, email=, email2=, email3=, homepage=, bday=0, bmonth=-, byear=, aday=0, amonth=-, ayear=, photo=]]> but was: <[]>",
+        "time": {
+          "start": 1716632906387,
+          "stop": 1716632911630,
+          "duration": 5243
+        }
+      },
+      {
+        "uid": "3239a909ebd18652",
+        "status": "failed",
+        "statusDetails": "expected: <[UserData[id=1060, firstname=tnvbznnzzp, middlename=, lastname=denibjzrhl, nickname=, title=, company=, address=, home=, mobile=, work=, fax=, email=, email2=, email3=, homepage=, bday=0, bmonth=-, byear=, aday=0, amonth=-, ayear=, photo=]]> but was: <[]>",
+        "time": {
+          "start": 1716632852938,
+          "stop": 1716632858189,
+          "duration": 5251
+        }
+      },
+      {
+        "uid": "788a96f6db4a9d21",
+        "status": "passed",
+        "time": {
+          "start": 1716632779804,
+          "stop": 1716632788537,
+          "duration": 8733
+        }
+      },
+      {
+        "uid": "1a5b11651ba5a705",
+        "status": "passed",
+        "time": {
+          "start": 1716632470234,
+          "stop": 1716632479021,
+          "duration": 8787
+        }
+      },
+      {
+        "uid": "99a4a47da163a911",
+        "status": "failed",
+        "statusDetails": "expected: <[UserData[id=1056, firstname=ljnijcogxz, middlename=, lastname=vkddvrzygb, nickname=, title=, company=, address=, home=, mobile=, work=, fax=, email=, email2=, email3=, homepage=, bday=0, bmonth=-, byear=, aday=0, amonth=-, ayear=, photo=]]> but was: <[]>",
+        "time": {
+          "start": 1716632356253,
+          "stop": 1716632361586,
+          "duration": 5333
+        }
+      },
+      {
+        "uid": "613cc1cab17e6df2",
+        "status": "passed",
+        "time": {
+          "start": 1716632133887,
+          "stop": 1716632142666,
+          "duration": 8779
+        }
+      },
+      {
+        "uid": "fbafbc51ad75b9b2",
+        "status": "failed",
+        "statusDetails": "expected: <[UserData[id=1052, firstname=hbpqlaajnc, middlename=, lastname=nknqvgxttu, nickname=, title=, company=, address=, home=, mobile=, work=, fax=, email=, email2=, email3=, homepage=, bday=0, bmonth=-, byear=, aday=0, amonth=-, ayear=, photo=]]> but was: <[]>",
+        "time": {
+          "start": 1716631946610,
+          "stop": 1716631951789,
+          "duration": 5179
+        }
+      },
+      {
+        "uid": "1ea266b8cb5bd367",
+        "status": "broken",
+        "statusDetails": "Tried to run command without establishing a connection\nBuild info: version: '4.19.1', revision: 'abe0ee07dc'\nSystem info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.2'\nDriver info: org.openqa.selenium.firefox.FirefoxDriver\nCommand: [ddbf15d0-4970-471a-8aad-0cfbf47b4b27, findElements {using=css selector, value=tr[name=\"entry\"]}]\nCapabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 126.0, moz:accessibilityChecks: false, moz:buildID: 20240509170740, moz:debuggerAddress: 127.0.0.1:13376, moz:geckodriverVersion: 0.34.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 25852, moz:profile: C:\\Users\\Vadim\\AppData\\Loca..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://127.0.0.1:13376/devtoo..., se:cdpVersion: 85.0, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}\nSession ID: ddbf15d0-4970-471a-8aad-0cfbf47b4b27",
+        "time": {
+          "start": 1716631861009,
+          "stop": 1716631861016,
+          "duration": 7
+        }
+      },
+      {
+        "uid": "fa405e57cf424b7d",
+        "status": "failed",
+        "statusDetails": "expected: <[UserData[id=1048, firstname=ftxtikwqjt, middlename=, lastname=mnrqbrtfub, nickname=, title=, company=, address=, home=, mobile=, work=, fax=, email=, email2=, email3=, homepage=, bday=0, bmonth=-, byear=, aday=0, amonth=-, ayear=, photo=]]> but was: <[]>",
+        "time": {
+          "start": 1716631524962,
+          "stop": 1716631530170,
+          "duration": 5208
+        }
+      },
+      {
+        "uid": "4f607df3802d367e",
+        "status": "passed",
+        "time": {
+          "start": 1716630545346,
+          "stop": 1716630554216,
+          "duration": 8870
+        }
+      },
+      {
+        "uid": "2e237913993bf1bd",
+        "status": "broken",
+        "statusDetails": "DB is corrupted",
+        "time": {
+          "start": 1716630480486,
+          "stop": 1716630489425,
+          "duration": 8939
+        }
+      },
+      {
+        "uid": "4340549c92125efa",
+        "status": "failed",
+        "statusDetails": "expected: <[UserData[id=1043, firstname=mttjzigwrj, middlename=, lastname=bhvkytawbu, nickname=, title=, company=, address=, home=, mobile=, work=, fax=, email=, email2=, email3=, homepage=, bday=0, bmonth=-, byear=, aday=0, amonth=-, ayear=, photo=], UserData[id=1039, firstname=pnxwzpavzz, middlename=, lastname=evoandasxy, nickname=, title=, company=, address=, home=, mobile=, work=, fax=, email=, email2=, email3=, homepage=, bday=0, bmonth=-, byear=, aday=0, amonth=-, ayear=, photo=], UserData[id=1044, firstname=ajdcpeuyzx, middlename=, lastname=qefipejgnz, nickname=, title=, company=, address=, home=, mobile=, work=, fax=, email=, email2=, email3=, homepage=, bday=0, bmonth=-, byear=, aday=0, amonth=-, ayear=, photo=]]> but was: <[]>",
+        "time": {
+          "start": 1716630424469,
+          "stop": 1716630429613,
+          "duration": 5144
+        }
+      }
+    ],
+    "categories": [],
+    "history": {
+      "statistic": {
+        "failed": 3,
+        "broken": 0,
+        "skipped": 0,
+        "passed": 2,
+        "unknown": 0,
+        "total": 5
+      },
+      "items": [
+        {
+          "uid": "16c84b9ac4c94df6",
+          "status": "failed",
+          "statusDetails": "expected: <[UserData[id=1056, firstname=ljnijcogxz, middlename=, lastname=vkddvrzygb, nickname=, title=, company=, address=, home=, mobile=, work=, fax=, email=, email2=, email3=, homepage=, bday=0, bmonth=-, byear=, aday=0, amonth=-, ayear=, photo=]]> but was: <[]>",
+          "time": {
+            "start": 1716632356253,
+            "stop": 1716632361586,
+            "duration": 5333
+          }
+        },
+        {
+          "uid": "ddbe271bf23ed2f2",
+          "status": "failed",
+          "statusDetails": "expected: <[UserData[id=1052, firstname=hbpqlaajnc, middlename=, lastname=nknqvgxttu, nickname=, title=, company=, address=, home=, mobile=, work=, fax=, email=, email2=, email3=, homepage=, bday=0, bmonth=-, byear=, aday=0, amonth=-, ayear=, photo=]]> but was: <[]>",
+          "time": {
+            "start": 1716631946610,
+            "stop": 1716631951789,
+            "duration": 5179
+          }
+        },
+        {
+          "uid": "61787342dd08bb67",
+          "status": "failed",
+          "statusDetails": "expected: <[UserData[id=1048, firstname=ftxtikwqjt, middlename=, lastname=mnrqbrtfub, nickname=, title=, company=, address=, home=, mobile=, work=, fax=, email=, email2=, email3=, homepage=, bday=0, bmonth=-, byear=, aday=0, amonth=-, ayear=, photo=]]> but was: <[]>",
+          "time": {
+            "start": 1716631524962,
+            "stop": 1716631530170,
+            "duration": 5208
+          }
+        },
+        {
+          "uid": "f8d3cac40bda2007",
+          "status": "passed",
+          "time": {
+            "start": 1716630545346,
+            "stop": 1716630554216,
+            "duration": 8870
+          }
+        }
+      ]
+    },
+    "tags": []
+  },
+  "source": "4a58c9d00c0b9907.json",
+  "parameterValues": []
+}

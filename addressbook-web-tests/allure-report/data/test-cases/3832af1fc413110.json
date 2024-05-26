@@ -1,1 +1,219 @@
-{"uid":"3832af1fc413110","name":"testAllElementsOnTheForm()","fullName":"ru.stqa.addressbook.tests.UserInfoTests.testAllElementsOnTheForm","historyId":"bed2daf726834707b6e89bbda976e4ae","time":{"start":1716633010630,"stop":1716633016986,"duration":6356},"description":"","status":"passed","flaky":false,"newFailed":false,"newBroken":false,"newPassed":false,"retriesCount":10,"retriesStatusChange":true,"beforeStages":[],"afterStages":[],"labels":[{"name":"junit.platform.uniqueid","value":"[engine:junit-jupiter]/[class:ru.stqa.addressbook.tests.UserInfoTests]/[method:testAllElementsOnTheForm()]"},{"name":"host","value":"DESKTOP-DUAUSV2"},{"name":"thread","value":"28604@DESKTOP-DUAUSV2.Test worker(1)"},{"name":"framework","value":"junit-platform"},{"name":"language","value":"java"},{"name":"package","value":"ru.stqa.addressbook.tests.UserInfoTests"},{"name":"testClass","value":"ru.stqa.addressbook.tests.UserInfoTests"},{"name":"testMethod","value":"testAllElementsOnTheForm"},{"name":"suite","value":"ru.stqa.addressbook.tests.UserInfoTests"},{"name":"resultFormat","value":"allure2"}],"parameters":[],"links":[],"hidden":false,"retry":false,"extra":{"severity":"normal","retries":[{"uid":"4b9953b37cdeb2ac","status":"failed","statusDetails":"expected: <{1069=+75597648516\n+78937685689\n+72695186751, 1068=+70796774013\n+76875717250\n+74449704698, 1067=+791711122233\n+791733322211\n+791722233311}> but was: <{1069=+75597648516\n+78937685689\n+72695186751, 1068=+7796774013\n+76875717250\n+74449704698, 1067=+791711122233\n+791733322211\n+791722233311}>","time":{"start":1716632960781,"stop":1716632961283,"duration":502}},{"uid":"793be87bedcb4fe4","status":"passed","time":{"start":1716632916969,"stop":1716632917388,"duration":419}},{"uid":"99906de26aea1524","status":"passed","time":{"start":1716632868879,"stop":1716632869359,"duration":480}},{"uid":"800fc02640a42669","status":"passed","time":{"start":1716632372266,"stop":1716632372719,"duration":453}},{"uid":"7da1bdcf2ed6d124","status":"passed","time":{"start":1716631962670,"stop":1716631963129,"duration":459}},{"uid":"625bade347f76c4a","status":"broken","statusDetails":"Tried to run command without establishing a connection\nBuild info: version: '4.19.1', revision: 'abe0ee07dc'\nSystem info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.2'\nDriver info: org.openqa.selenium.firefox.FirefoxDriver\nCommand: [ddbf15d0-4970-471a-8aad-0cfbf47b4b27, findElement {using=link text, value=home}]\nCapabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 126.0, moz:accessibilityChecks: false, moz:buildID: 20240509170740, moz:debuggerAddress: 127.0.0.1:13376, moz:geckodriverVersion: 0.34.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 25852, moz:profile: C:\\Users\\Vadim\\AppData\\Loca..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://127.0.0.1:13376/devtoo..., se:cdpVersion: 85.0, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}\nSession ID: ddbf15d0-4970-471a-8aad-0cfbf47b4b27","time":{"start":1716631861075,"stop":1716631861084,"duration":9}},{"uid":"490317236616136a","status":"passed","time":{"start":1716631742419,"stop":1716631748832,"duration":6413}},{"uid":"db5c3866cf2d29b5","status":"broken","statusDetails":"DB is corrupted","time":{"start":1716631713770,"stop":1716631720262,"duration":6492}},{"uid":"ba039e01227e5e19","status":"failed","statusDetails":"expected: <{1049=+73395767086\n+77355497209\n+70401590164, 1048=+791711122233\n+791733322211\n+791722233311, 1050=+71112302747\n+77311271772\n+70882175676}> but was: <{1049=+73395767086\n+77355497209\n+7401590164, 1048=+791711122233\n+791733322211\n+791722233311, 1050=+71112302747\n+77311271772\n+7882175676}>","time":{"start":1716631541038,"stop":1716631541499,"duration":461}},{"uid":"b5cc6613fbb4972d","status":"passed","time":{"start":1716630440002,"stop":1716630440610,"duration":608}}],"categories":[],"history":{"statistic":{"failed":1,"broken":0,"skipped":0,"passed":4,"unknown":0,"total":5},"items":[{"uid":"6124fc9a3739975","status":"passed","time":{"start":1716632372266,"stop":1716632372719,"duration":453}},{"uid":"33bf6cb52f4f5c95","status":"passed","time":{"start":1716631962670,"stop":1716631963129,"duration":459}},{"uid":"31177c801052ab0c","status":"failed","statusDetails":"expected: <{1049=+73395767086\n+77355497209\n+70401590164, 1048=+791711122233\n+791733322211\n+791722233311, 1050=+71112302747\n+77311271772\n+70882175676}> but was: <{1049=+73395767086\n+77355497209\n+7401590164, 1048=+791711122233\n+791733322211\n+791722233311, 1050=+71112302747\n+77311271772\n+7882175676}>","time":{"start":1716631541038,"stop":1716631541499,"duration":461}},{"uid":"cfb0488cbd6525a0","status":"passed","time":{"start":1716630440002,"stop":1716630440610,"duration":608}}]},"tags":[]},"source":"3832af1fc413110.json","parameterValues":[]}
+{
+  "uid": "3832af1fc413110",
+  "name": "testAllElementsOnTheForm()",
+  "fullName": "ru.stqa.addressbook.tests.UserInfoTests.testAllElementsOnTheForm",
+  "historyId": "bed2daf726834707b6e89bbda976e4ae",
+  "time": {
+    "start": 1716633010630,
+    "stop": 1716633016986,
+    "duration": 6356
+  },
+  "description": "",
+  "status": "passed",
+  "flaky": false,
+  "newFailed": false,
+  "newBroken": false,
+  "newPassed": false,
+  "retriesCount": 10,
+  "retriesStatusChange": true,
+  "beforeStages": [],
+  "afterStages": [],
+  "labels": [
+    {
+      "name": "junit.platform.uniqueid",
+      "value": "[engine:junit-jupiter]/[class:ru.stqa.addressbook.tests.UserInfoTests]/[method:testAllElementsOnTheForm()]"
+    },
+    {
+      "name": "host",
+      "value": "DESKTOP-DUAUSV2"
+    },
+    {
+      "name": "thread",
+      "value": "28604@DESKTOP-DUAUSV2.Test worker(1)"
+    },
+    {
+      "name": "framework",
+      "value": "junit-platform"
+    },
+    {
+      "name": "language",
+      "value": "java"
+    },
+    {
+      "name": "package",
+      "value": "ru.stqa.addressbook.tests.UserInfoTests"
+    },
+    {
+      "name": "testClass",
+      "value": "ru.stqa.addressbook.tests.UserInfoTests"
+    },
+    {
+      "name": "testMethod",
+      "value": "testAllElementsOnTheForm"
+    },
+    {
+      "name": "suite",
+      "value": "ru.stqa.addressbook.tests.UserInfoTests"
+    },
+    {
+      "name": "resultFormat",
+      "value": "allure2"
+    }
+  ],
+  "parameters": [],
+  "links": [],
+  "hidden": false,
+  "retry": false,
+  "extra": {
+    "severity": "normal",
+    "retries": [
+      {
+        "uid": "4b9953b37cdeb2ac",
+        "status": "failed",
+        "statusDetails": "expected: <{1069=+75597648516\n+78937685689\n+72695186751, 1068=+70796774013\n+76875717250\n+74449704698, 1067=+791711122233\n+791733322211\n+791722233311}> but was: <{1069=+75597648516\n+78937685689\n+72695186751, 1068=+7796774013\n+76875717250\n+74449704698, 1067=+791711122233\n+791733322211\n+791722233311}>",
+        "time": {
+          "start": 1716632960781,
+          "stop": 1716632961283,
+          "duration": 502
+        }
+      },
+      {
+        "uid": "793be87bedcb4fe4",
+        "status": "passed",
+        "time": {
+          "start": 1716632916969,
+          "stop": 1716632917388,
+          "duration": 419
+        }
+      },
+      {
+        "uid": "99906de26aea1524",
+        "status": "passed",
+        "time": {
+          "start": 1716632868879,
+          "stop": 1716632869359,
+          "duration": 480
+        }
+      },
+      {
+        "uid": "800fc02640a42669",
+        "status": "passed",
+        "time": {
+          "start": 1716632372266,
+          "stop": 1716632372719,
+          "duration": 453
+        }
+      },
+      {
+        "uid": "7da1bdcf2ed6d124",
+        "status": "passed",
+        "time": {
+          "start": 1716631962670,
+          "stop": 1716631963129,
+          "duration": 459
+        }
+      },
+      {
+        "uid": "625bade347f76c4a",
+        "status": "broken",
+        "statusDetails": "Tried to run command without establishing a connection\nBuild info: version: '4.19.1', revision: 'abe0ee07dc'\nSystem info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.2'\nDriver info: org.openqa.selenium.firefox.FirefoxDriver\nCommand: [ddbf15d0-4970-471a-8aad-0cfbf47b4b27, findElement {using=link text, value=home}]\nCapabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 126.0, moz:accessibilityChecks: false, moz:buildID: 20240509170740, moz:debuggerAddress: 127.0.0.1:13376, moz:geckodriverVersion: 0.34.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 25852, moz:profile: C:\\Users\\Vadim\\AppData\\Loca..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://127.0.0.1:13376/devtoo..., se:cdpVersion: 85.0, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}\nSession ID: ddbf15d0-4970-471a-8aad-0cfbf47b4b27",
+        "time": {
+          "start": 1716631861075,
+          "stop": 1716631861084,
+          "duration": 9
+        }
+      },
+      {
+        "uid": "490317236616136a",
+        "status": "passed",
+        "time": {
+          "start": 1716631742419,
+          "stop": 1716631748832,
+          "duration": 6413
+        }
+      },
+      {
+        "uid": "db5c3866cf2d29b5",
+        "status": "broken",
+        "statusDetails": "DB is corrupted",
+        "time": {
+          "start": 1716631713770,
+          "stop": 1716631720262,
+          "duration": 6492
+        }
+      },
+      {
+        "uid": "ba039e01227e5e19",
+        "status": "failed",
+        "statusDetails": "expected: <{1049=+73395767086\n+77355497209\n+70401590164, 1048=+791711122233\n+791733322211\n+791722233311, 1050=+71112302747\n+77311271772\n+70882175676}> but was: <{1049=+73395767086\n+77355497209\n+7401590164, 1048=+791711122233\n+791733322211\n+791722233311, 1050=+71112302747\n+77311271772\n+7882175676}>",
+        "time": {
+          "start": 1716631541038,
+          "stop": 1716631541499,
+          "duration": 461
+        }
+      },
+      {
+        "uid": "b5cc6613fbb4972d",
+        "status": "passed",
+        "time": {
+          "start": 1716630440002,
+          "stop": 1716630440610,
+          "duration": 608
+        }
+      }
+    ],
+    "categories": [],
+    "history": {
+      "statistic": {
+        "failed": 1,
+        "broken": 0,
+        "skipped": 0,
+        "passed": 4,
+        "unknown": 0,
+        "total": 5
+      },
+      "items": [
+        {
+          "uid": "6124fc9a3739975",
+          "status": "passed",
+          "time": {
+            "start": 1716632372266,
+            "stop": 1716632372719,
+            "duration": 453
+          }
+        },
+        {
+          "uid": "33bf6cb52f4f5c95",
+          "status": "passed",
+          "time": {
+            "start": 1716631962670,
+            "stop": 1716631963129,
+            "duration": 459
+          }
+        },
+        {
+          "uid": "31177c801052ab0c",
+          "status": "failed",
+          "statusDetails": "expected: <{1049=+73395767086\n+77355497209\n+70401590164, 1048=+791711122233\n+791733322211\n+791722233311, 1050=+71112302747\n+77311271772\n+70882175676}> but was: <{1049=+73395767086\n+77355497209\n+7401590164, 1048=+791711122233\n+791733322211\n+791722233311, 1050=+71112302747\n+77311271772\n+7882175676}>",
+          "time": {
+            "start": 1716631541038,
+            "stop": 1716631541499,
+            "duration": 461
+          }
+        },
+        {
+          "uid": "cfb0488cbd6525a0",
+          "status": "passed",
+          "time": {
+            "start": 1716630440002,
+            "stop": 1716630440610,
+            "duration": 608
+          }
+        }
+      ]
+    },
+    "tags": []
+  },
+  "source": "3832af1fc413110.json",
+  "parameterValues": []
+}

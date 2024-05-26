@@ -1,9 +1,17 @@
 package ru.stqa.addressbook.manager;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Properties;
 
 public class ApplicationManager {
@@ -15,13 +23,22 @@ public class ApplicationManager {
     private Properties properties;
     private HibernateHelper hbm;
 
-    public void init(String browser, Properties properties) {
+    public void init(String browser, Properties properties) throws MalformedURLException {
         this.properties = properties;
         if (driver == null) {
+            var seleniumServer = properties.getProperty("seleniumServer");
             if ("firefox".equals(browser)) {
-                driver = new FirefoxDriver();
+                if (seleniumServer != null) {
+                    driver = new RemoteWebDriver(new URL(seleniumServer), new FirefoxOptions());
+                } else {
+                    driver = new FirefoxDriver();
+                }
             } else if ("chrome".equals(browser)) {
-                driver = new ChromeDriver();
+                if (seleniumServer != null) {
+                    driver = new RemoteWebDriver(new URL(seleniumServer), new ChromeOptions());
+                } else {
+                    driver = new ChromeDriver();
+                }
             } else {
                 throw new IllegalArgumentException(String.format("Unknown browser %s", browser));
             }
@@ -31,6 +48,23 @@ public class ApplicationManager {
             session().login(properties.getProperty("web.username"), properties.getProperty("web.password"));
         }
     }
+
+//    public void init(String browser, Properties properties) {
+//        this.properties = properties;
+//        if (driver == null) {
+//            if ("firefox".equals(browser)) {
+//                driver = new FirefoxDriver();
+//            } else if ("chrome".equals(browser)) {
+//                driver = new ChromeDriver();
+//            } else {
+//                throw new IllegalArgumentException(String.format("Unknown browser %s", browser));
+//            }
+//            Runtime.getRuntime().addShutdownHook(new Thread(driver::quit));
+//            driver.get(properties.getProperty("web.baseUrl"));
+//            driver.manage().window().setSize(new Dimension(2576, 1426));
+//            session().login(properties.getProperty("web.username"), properties.getProperty("web.password"));
+//        }
+//    }
 
     public LoginHelper session() {
         if (session == null) {
